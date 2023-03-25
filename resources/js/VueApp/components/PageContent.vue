@@ -119,11 +119,6 @@ export default {
 
     },
     //make this dynamic for less repetetive code:
-
-
- 
-
-
 }
 
 </script>

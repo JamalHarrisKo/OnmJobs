@@ -17,3 +17,9 @@ Route::get('/', function () {
     //route to vue js application
     return view('app');
 });
+
+//add route/controller action for sending an email
+// Route::get('/sendmail', function () {
+//     //route to vue js application
+//     return view('welcome');
+// });

@@ -10,17 +10,17 @@ import TextImage from './TextImage.vue'
         <!-- <div>{{ ContentArray }}</div> -->
         <div class="pageContent__single" v-for="content in ContentArray">
             <!-- {{ content }} -->
-            <div v-if="content['__component'] == 'text.seiten-ueberschrift'">
+            <div v-if="content['__component'] == 'text.page-header'">
                 <PageHeadline>
-                    <template #heading>{{ content['Hauptberschrift'] }}</template>
-                    <template #headingSubtext>{{ content['subheader'] }}</template>
+                    <template #heading>{{ content['HeaderMain'] }}</template>
+                    <template #headingSubtext>{{ content['HeaderSub'] }}</template>
                 </PageHeadline>
             </div>
-            <div v-if="content['__component'] == 'text.text-and-image'">
+            <div v-if="content['__component'] == 'text.text-image'">
                 <!-- {{ content }} -->
                 <TextImage>
                     <p>{{ content["Text"] }}</p>
-                    <img :src="'http://localhost:1337'+content['Bild']['data']['attributes']['formats']['medium']['url']">
+                    <img :src="'http://localhost:1337'+content['Image']['data']['attributes']['formats']['medium']['url']">
                     <hr>
                     <!-- {{ content['Bild']['data']['attributes']['formats']['medium']['url'] }} -->
             </TextImage>

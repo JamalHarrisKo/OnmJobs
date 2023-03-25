@@ -1,0 +1,6 @@
+
+//Daten von strapi in Laravel erhalten
+php artisan make:middleware Cors
+
+
+Fix CORS ERRor: STRAPI middleware.js

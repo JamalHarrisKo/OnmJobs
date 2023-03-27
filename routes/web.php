@@ -47,4 +47,6 @@ Route::post('/testroute', function(Request $request) {
 
 //solve using controller
 
-Route::post('/sendmail', 'SendMailController@sendmail');
+// Route::post('/sendmail', 'SendMailController@sendmail');
+
+//https://www.wpoven.com/tools/free-smtp-server-for-testing# mailing check

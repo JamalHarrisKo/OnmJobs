@@ -2,6 +2,8 @@
 <script setup>
 import PageHeadline from './PageHeadline.vue';
 import TextImage from './TextImage.vue'
+import Form from './Form.vue'
+
 // import TextImage from './TextImage.vue'
 </script>
 <template>
@@ -21,11 +23,15 @@ import TextImage from './TextImage.vue'
                 <TextImage>
                     <p>{{ content["Text"] }}</p>
                     <img :src="'http://localhost:1337'+content['Image']['data']['attributes']['formats']['medium']['url']">
-                    <hr>
+            
                     <!-- {{ content['Bild']['data']['attributes']['formats']['medium']['url'] }} -->
             </TextImage>
         </div>
-            <hr>
+        <div v-if="content['__component'] == 'formulare.formular' && content['Formular'][0] == ['Formular 1'] ">
+                <!-- {{ content }} -->
+                <Form></Form>
+        </div>
+            
         </div>
 
     <!-- render list of all components HERE -->

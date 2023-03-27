@@ -10,6 +10,9 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@formkit/addons": "^0.16.4",
+        "@formkit/themes": "^0.16.4",
+        "@formkit/vue": "^0.16.4",
         "@vitejs/plugin-vue": "^4.1.0",
         "strapi-plugin-populate-deep": "^2.0.0",
         "vue": "^3.2.36",

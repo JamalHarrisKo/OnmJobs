@@ -1,3 +1,3 @@
-
-name: <?= $_POST['name']?>
-text: <?= $_POST['text']?>
+mailcontent
+name: {{ $name }}
+text: {{ $content}}

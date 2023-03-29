@@ -17,11 +17,13 @@ import PageContent from '../components/PageContent.vue'
     <!-- problem:
     <PageContent pageContentID=this.pageContentID></PageContent> -->
       <!-- fix -->
+      
     <PageContent :pageContentID=1></PageContent>
 
   </main>
 </template>
 <script>
+
 export default {
   name: 'App',
   props: ['pageContentID'],

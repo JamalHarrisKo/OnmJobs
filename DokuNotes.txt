@@ -4,3 +4,22 @@ php artisan make:middleware Cors
 
 
 Fix CORS ERRor: STRAPI middleware.js
+
+
+//Daten von Laravel an JS senden
+
+composer require laracasts/utilities
+
+-->
+public function index()
+{
+    JavaScript::put([
+        'foo' => 'bar',
+        'user' => User::first(),
+        'age' => 29
+    ]);
+
+    return View::make('hello');
+}
+
+Anstelle: form validation ueber Formkit selbst (js)

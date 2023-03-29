@@ -9,6 +9,8 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Attachment;
+
 
 
 // Envelope – Returns the Illuminate\Mail\Mailables\Envelope object, which defines the subject and the recipients.
@@ -17,14 +19,21 @@ use Illuminate\Queue\SerializesModels;
 class ApplicationMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    // protected $data;
+    private $name;
+    private $content;
+    public $file;
     /**
      * Create a new message instance.
      */
     //add name var 
-    public function __construct(private $name, private $content, public $attachments)
+    public function __construct($name, $content, $file)
     {
         //
+        $this->name = $name;
+        $this->content = $content;
+
+        $this->file = $file;
     }
 
     /**
@@ -33,8 +42,8 @@ class ApplicationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('info@onm.de', 'ONM Jobs'),
-            subject: 'Application Mail',
+            // from: new Address('info@onm.de', 'ONM Jobs'),
+            // subject: 'Application Mail',
         );
     }
 
@@ -44,8 +53,9 @@ class ApplicationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.email',
-            with: ['name' => $this->name, 'content' => $this->content],
+             view: 'mail.email',
+             with: ['name' => $this->name, 'content' => $this->content],
+
         );
     }
 
@@ -55,7 +65,12 @@ class ApplicationMail extends Mailable
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array
-    {
-        return [$this->attachments];
+    { 
+        return [
+            Attachment::fromPath($this->file->path())
+            // ->as($this->file->getClientOriginalName())
+            // ->withMime($this->file->getClientMimeType())
+        ];
     }
+
 }

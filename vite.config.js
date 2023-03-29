@@ -6,7 +6,15 @@ import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     plugins: [
-        vue(), //ad vue to laravel as plugin
+        vue({
+            template: {
+                compilerOptions: {
+                  isCustomElement: (tag) => {
+                    return tag.startsWith('Formkit') // (return true)
+                  }
+                }
+            }
+        }), //ad vue to laravel as plugin
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,

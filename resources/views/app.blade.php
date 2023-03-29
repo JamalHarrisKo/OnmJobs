@@ -13,13 +13,9 @@
 </head>
 
 <body>
-	<div style="background-color:white">
-		<hr>
-
-		<hr>
-	</div>
-
+	<?php $error = ['hi im an error'];?>
 	<div id="app"></div>
+	
 	<input form="jobApplication" type="hidden" name="_token" id="csrf-token" value="{{ csrf_token() }}">
 	@vite('resources/js/app.js')
 </body>

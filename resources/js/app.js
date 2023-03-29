@@ -13,14 +13,12 @@
 
 // app.mount('#app')
 
-
-
-
-
-
 import { createApp } from 'vue'
 import App from './VueApp/App.vue'
 import router from './VueApp/router'
+
+//form validation
+import name from './VueApp/custom-form-rules/name'
 
 import './VueApp/assets/main.css'
 
@@ -34,7 +32,8 @@ const app = createApp(App)
 
 app.use(router)
 app.use(formKitPlugin, defaultConfig({
-    plugins: [createMultiStepPlugin()]
+    plugins: [createMultiStepPlugin()],
+    rules: { name }
 }))
-
+,
 app.mount('#app')

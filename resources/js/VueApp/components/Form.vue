@@ -1,9 +1,13 @@
 <template>
-    <Formkit type="form" :actions="false">
+    <FormKit type="form" action="/false">
         <FormKit type="multi-step" tab-style="progress" :allow-incomplete="false">
             <FormKit type="step" name="stepOne">
                 <!-- content for stepOne goes here! -->
-                <FormKit type="text" label="Name" validation="required" />
+
+                <!-- custom validation rule and custom validation message-->
+                <FormKit type="text" label="Name" validation="required|name" :validation-messages="{
+                    name: 'name cannot be nameless or nonname',
+                }" />
                 <FormKit type="text" label="Nachname" validation="required" />
                 <FormKit type="email" label="Your Email" validation="required|email" />
             </FormKit>
@@ -21,17 +25,47 @@
             <FormKit type="step" name="stepFour">
                 <!-- content for stepOne goes here! -->
                 <p>vielen Dank für deine Bewerbung! Klicke auf absenden um deine Bewerbung abszuschicken</p>
-                <FormKit type="submit" label="absenden" />
+                <!-- <FormKit type="submit" label="absenden" /> -->
             </FormKit>
         </FormKit>
-    </Formkit>
-    <p>testformular zum versenden</p>
-    <form id="jobApplication" action="/testroute" method="POST" enctype="multipart/form-data">
+    </FormKit>
+
+
+    <FormKit id="jobApplication" type="form" action="/sendApplication" method="POST" enctype="multipart/form-data" s>
+        <FormKit type="multi-step" tab-style="progress" :allow-incomplete="false">
+            <FormKit type="step" name="stepOne">
+                <!-- content for stepOne goes here! -->
+
+                <!-- custom validation rule and custom validation message-->
+                <FormKit type="text" label="Name" name="name" validation="required|name" :validation-messages="{
+                    name: 'name cannot be nameless or nonname',
+                }" />
+            </FormKit>
+            <FormKit type="step" name="stepTwo">
+                <!-- content for stepOne goes here! -->
+                <FormKit type="text" name="text" label="Text" validation="required" />
+
+            </FormKit>
+            <FormKit type="step" name="stepThree">
+                <!-- content for stepOne goes here! -->
+                <FormKit type="file" name='file' label="Documents" accept=".pdf,.doc,.docx,.xml,.md,.csv"
+                    help="Select as many documents as you would like." multiple="true" />
+                <FormKit type="submit" label="Absenden" />
+            </FormKit>
+        </FormKit>
+    </FormKit>
+
+    <!-- <form id="jobApplication" action="/sendApplication" method="POST" enctype="multipart/form-data">
+
+    // TODO request errors via xhr -->
+    <!-- <label for="name">Name:</label>
         <input type="text" name="name">
-        <input type="text" name="text">
-        <input type="file" name="file">
-        <input type="submit">
-    </form>
+        <label for="text">Text:</label>
+            <input type="text" name="text">
+            <label for="file">Datei:</label>
+            <input type="file" name="file">
+            <input type="submit">
+        </form> -->
 </template>
 
 <script>

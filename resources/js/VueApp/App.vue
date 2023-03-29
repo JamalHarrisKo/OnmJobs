@@ -1,4 +1,4 @@
-<template> 
+<template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
@@ -6,7 +6,7 @@
     <!-- Add Navigation via router Links -->
     <nav>
       <RouterLink to="/">Home</RouterLink>
-  
+
       <RouterLink to="/jobs">Jobs</RouterLink>
 
       <RouterLink to="/Ausbildung">Ausbildung</RouterLink>
@@ -16,10 +16,14 @@
   <!-- Render content with router -->
   <div class="content-container">
 
-  <RouterView />
+    <RouterView />
+  
   </div>
 </template>
 <style>
+.formkit-actions{
+  display: none;
+}
 body {
   margin: 0 !important;
   padding: 0 !important;
@@ -48,3 +52,27 @@ nav a {
 
 }
 </style>
+<script>
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Your code goes here
+//   setTimeout(function(){
+//     appContainer = document.querySelector("#appErrorDiv");
+//   errors = appContainer.dataset.error
+//   console.log(errors)
+//   }, 5000)
+
+// });
+
+
+
+
+
+
+
+// export default{
+//   props:[
+//     'error'
+//   ]
+
+// }
+</script>

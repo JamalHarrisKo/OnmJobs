@@ -10,6 +10,7 @@ import Form from './Form.vue'
     <div class="pageContent">
         <!-- <slot name="pageContent"></slot> -->
         <!-- <div>{{ ContentArray }}</div> -->
+        <!-- {{ ContentArray }} -->
         <div class="pageContent__single" v-for="content in ContentArray">
             <!-- {{ content }} -->
             <div v-if="content['__component'] == 'text.page-header'">
@@ -22,29 +23,54 @@ import Form from './Form.vue'
                 <!-- {{ content }} -->
                 <TextImage>
                     <p>{{ content["Text"] }}</p>
-                    <img :src="'http://localhost:1337'+content['Image']['data']['attributes']['formats']['medium']['url']">
-            
+                    <img
+                        :src="'http://localhost:1337' + content['Image']['data']['attributes']['formats']['medium']['url']">
+
                     <!-- {{ content['Bild']['data']['attributes']['formats']['medium']['url'] }} -->
-            </TextImage>
+                </TextImage>
+            </div>
+            <!-- <div v-if="content['__component'] == 'formulare.formular' && content['Formular'][0] == ['Formular 1']"> -->
+            <!-- {{ content }} -->
+            <!-- <Form></Form> -->
+            <!-- </div> -->
+            <div v-if="content['__component'] == 'jobs.joblist'">
+                <!-- todo: make vue component -->
+
+
+
+                <li v-for="job_ad in content['job_ads']['data']">
+                    <div v-if="job_ad['attributes']['page']['data'] != null">
+                        <RouterLink :to="{ path: '/' + job_ad['attributes']['page']['data']['id'] }">
+                            <p>{{ job_ad['attributes']['Title'] }}</p>
+                            <p>{{ job_ad['attributes']['Date'] }}</p>
+                        </RouterLink>
+                    </div>
+                    <div v-else>
+                        <p>{{ job_ad['attributes']['Title'] }}</p>
+                        <p>{{ job_ad['attributes']['Date'] }}</p>
+                    </div>
+
+                </li>
+            </div>
+            <div v-if="content['__component'] == 'formulare.formular' && content['Formular'] == 'PHP Entwickler (FE)'">
+
+            <Form></Form>
         </div>
-        <div v-if="content['__component'] == 'formulare.formular' && content['Formular'][0] == ['Formular 1'] ">
-                <!-- {{ content }} -->
-                <Form></Form>
-        </div>
-            
-        </div>
+        <!-- {{ content }} -->
+
+    </div>
 
     <!-- render list of all components HERE -->
     <!-- components
         foreach 
-        if type = xy
-            print type xy
-                        end if
-                        if type = ab
-                            print type ab 
-                        end if
-                        end foreach 
-                    -->
+                                    if type = xy
+                                        print type xy
+                                                    end if
+                                                    if type = ab
+                                                        print type ab 
+                                                    end if
+                                                    end foreach 
+                                                -->
     </div>
 </template>
 
@@ -71,12 +97,14 @@ export default {
 
             pageObject: [],
             ContentArray: [],
+            jobObject: [],
+            jobContentArray: [],
             TextImage_Text: [],
             TextImage_Image: [],
             //add data source url to create dynamic link to pass to axios.get function
-            dataSrcURL: 'http://localhost:1337/api/pages/'+this.pageContentID+'/?populate=deep'
-            
-        
+            dataSrcURL: 'http://localhost:1337/api/pages/' + this.pageContentID + '/?populate=deep'
+
+
 
         }
 
@@ -99,10 +127,21 @@ export default {
 
                 this.loadContent(el)
             )
+            this.jobObject = response.data.data.attributes.job_ad.data.attributes.Content
+            // console.log(response.data.data.attributes.job_ad.data.attributes.Content)
+            this.jobObject.forEach(el =>
+                // console.log(this.el),
+                //if element __component type is xy
+                // this xy = xy.value
+
+
+                this.loadContent(el)
+            )
             // this.pageObject.forEach(el =>
             //     this.prepareContent(el)
             // )
-            this.logContent(this.ContentArray)
+            // this.logContent(this.ContentArray)
+            // console.log(this.ContentArray)
         }
         )
     },
@@ -111,6 +150,7 @@ export default {
         loadContent(el) {
             this.ContentArray.push(el)
         },
+
         logContent(array) {
             // array.forEach(ele => console.log(ele))
         },

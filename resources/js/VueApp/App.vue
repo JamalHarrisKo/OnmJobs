@@ -5,11 +5,13 @@
     <nav>
 
       <span v-for="navbarItem in navbarItems">
-        <RouterLink :to="{path: '/' + navbarItem.id}">{{ navbarItem.attributes.PageName }}</RouterLink>
+        <div v-if="navbarItem.attributes.showInNavigation == true">
+          <RouterLink :to="{ path: '/' + navbarItem.id }">{{ navbarItem.attributes.PageName }}</RouterLink>
+        </div>
       </span>
 
 
-      
+
       <!-- <RouterLink to="/1">Home</RouterLink>
 
       <RouterLink to="/2">Jobs</RouterLink>
@@ -96,7 +98,7 @@ export default {
 
       dataSrcURL: 'http://localhost:1337/api/pages/',
       //?populate=deep
-      navbarItems:[]
+      navbarItems: []
 
 
     }
@@ -111,7 +113,7 @@ export default {
       //   console.log(element.id)
       //   this.navbarItems.push(element)
       // });
-      this.navbarItems= response.data.data
+      this.navbarItems = response.data.data
       // console.log(this.navbarItems)
       // this.pageObject = response.data.data.attributes.PageContent
       // this.pageObject.forEach(el =>

@@ -1,34 +1,34 @@
 <template>
-    <FormKit type="form" action="/false">
+    <!-- <FormKit type="form" action="/false">
         <FormKit type="multi-step" tab-style="progress" :allow-incomplete="false">
-            <FormKit type="step" name="stepOne">
+            <FormKit type="step" name="stepOne"> -->
                 <!-- content for stepOne goes here! -->
 
                 <!-- custom validation rule and custom validation message-->
-                <FormKit type="text" label="Name" validation="required|name" :validation-messages="{
+                <!-- <FormKit type="text" label="Name" validation="required|name" :validation-messages="{
                     name: 'name cannot be nameless or nonname',
                 }" />
                 <FormKit type="text" label="Nachname" validation="required" />
                 <FormKit type="email" label="Your Email" validation="required|email" />
             </FormKit>
-            <FormKit type="step" name="stepTwo">
+            <FormKit type="step" name="stepTwo"> -->
                 <!-- content for stepOne goes here! -->
-                <FormKit type="radio" label="Wie Gut ist dein Wissen" help="selbsteinschätzung"
+                <!-- <FormKit type="radio" label="Wie Gut ist dein Wissen" help="selbsteinschätzung"
                     :options="['gar nicht gut', 'okay', 'Top']" />
             </FormKit>
-            <FormKit type="step" name="stepThree">
+            <FormKit type="step" name="stepThree"> -->
                 <!-- content for stepOne goes here! -->
-                <FormKit type="date" name="date" label="Wann kannst du Anfangen?" validation="required" />
+                <!-- <FormKit type="date" name="date" label="Wann kannst du Anfangen?" validation="required" />
                 <FormKit type="select" name="erfahrung" label="Welche Option?" placeholder="auswahl..."
                     :options="['option 1', 'HTML', 'CSS', 'Option 4']" />
             </FormKit>
-            <FormKit type="step" name="stepFour">
+            <FormKit type="step" name="stepFour"> -->
                 <!-- content for stepOne goes here! -->
-                <p>vielen Dank für deine Bewerbung! Klicke auf absenden um deine Bewerbung abszuschicken</p>
+                <!-- <p>vielen Dank für deine Bewerbung! Klicke auf absenden um deine Bewerbung abszuschicken</p> -->
                 <!-- <FormKit type="submit" label="absenden" /> -->
-            </FormKit>
+            <!-- </FormKit>
         </FormKit>
-    </FormKit>
+    </FormKit> -->
 
 
     <FormKit id="jobApplication" type="form" action="/sendApplication" method="POST" enctype="multipart/form-data" s>

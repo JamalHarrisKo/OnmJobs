@@ -49,7 +49,7 @@
             <FormKit type="step" name="stepThree">
                 <!-- content for stepOne goes here! -->
                 <FormKit type="file" name='file' label="Documents" accept=".pdf,.doc,.docx,.xml,.md,.csv"
-                    help="Select as many documents as you would like." multiple="true" />
+                    help="Select as many documents as you would like." multiple="true" validation="required" />
                 <FormKit type="submit" label="Absenden" />
             </FormKit>
         </FormKit>

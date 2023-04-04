@@ -53,8 +53,8 @@ class ApplicationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-             view: 'mail.email',
-             with: ['name' => $this->name, 'content' => $this->content],
+            view: 'mail.email',
+            with: ['name' => $this->name, 'content' => $this->content],
 
         );
     }
@@ -65,12 +65,11 @@ class ApplicationMail extends Mailable
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array
-    { 
+    {
         return [
             Attachment::fromPath($this->file->path())
-            // ->as($this->file->getClientOriginalName())
-            // ->withMime($this->file->getClientMimeType())
+                ->as($this->file->getClientOriginalName())
+                ->withMime($this->file->getClientMimeType())
         ];
     }
-
 }

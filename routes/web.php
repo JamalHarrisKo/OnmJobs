@@ -23,12 +23,12 @@ use App\Http\Controllers\Controller;
 */
 
 //use controller to send form errors with request
-// Route::get('/', function () {
-//     //route to vue js application
-//     return view('app');
-// });
+Route::get('/{id}', function ($id) {
+    //route to vue js application
+    return view('app');
+});
 
-Route::get('/', [Controller::class, 'getPHPVars']);
+// Route::get('/', [Controller::class, 'getPHPVars']);
 
 //add route/controller action for sending an email
 // Route::get('/sendmail', function () {

@@ -18,7 +18,10 @@ import PageContent from '../components/PageContent.vue'
     <PageContent pageContentID=this.pageContentID></PageContent> -->
       <!-- fix -->
       
-    <PageContent :pageContentID=1></PageContent>
+
+      <!-- :pageContentID="pageContentID" (with prop from router) makes this dynamic,
+       now i dont need further templates :) doesent work yet -.- -->
+    <PageContent :pageContentID="$route.params.id"></PageContent>
 
   </main>
 </template>
@@ -27,15 +30,38 @@ import PageContent from '../components/PageContent.vue'
 export default {
   name: 'App',
   props: ['pageContentID'],
-  // data() {
-  //     return {
-  //     }
+  data() {
+      return {
+        renderComponent: true,
 
+      }
+
+  },
+  // methods: {
+  //   async forceRerender() {
+  //     // Remove MyComponent from the DOM
+  //     this.renderComponent = false;
+
+	// 		// Wait for the change to get flushed to the DOM
+  //     await this.$nextTick();
+
+  //     // Add the component back in
+  //     this.renderComponent = true;
+  //   }
   // },
 
 
 
+// created(){
 
-
+//     this.$watch(
+//       () => this.$route.params,
+//       (toParams, previousParams) => {
+//         // react to route changes...
+//         this.$forceUpdate();  
+//       }
+//     )
+ 
+// }
 }
 </script>

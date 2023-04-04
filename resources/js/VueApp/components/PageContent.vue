@@ -112,7 +112,7 @@ export default {
             this.ContentArray.push(el)
         },
         logContent(array) {
-            array.forEach(ele => console.log(ele))
+            // array.forEach(ele => console.log(ele))
         },
         // prepareContent(el) {
         //     if (el['__component'] == 'text.seiten-ueberschrift') {

@@ -1,16 +1,17 @@
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
     <!-- Add Navigation via router Links -->
     <nav>
 
       <span v-for="navbarItem in navbarItems">
         <div v-if="navbarItem.attributes.showInNavigation == true">
-          <RouterLink :to="{ path: '/' + navbarItem.id }">{{ navbarItem.attributes.PageName }}</RouterLink>
+          <!-- <RouterLink :to="{ path: '/' + navbarItem.id }">{{ navbarItem.attributes.PageName }}</RouterLink> -->
+          <RouterLink :to="{ path: '/' + navbarItem.attributes.PageName }" v-if=" navbarItem.attributes.URLSlug == null">{{ navbarItem.attributes.PageName }}</RouterLink>
+          <RouterLink :to="{ path: '/' + navbarItem.attributes.URLSlug }" v-else>{{ navbarItem.attributes.PageName }}</RouterLink>
+
         </div>
       </span>
-
-
 
       <!-- <RouterLink to="/1">Home</RouterLink>
 
@@ -26,14 +27,13 @@
 
   </header>
   <!-- Render content with router -->
-  <div class="content-container">
+  <!-- <div class="content-container"> -->
     <!-- dynamic Routing sucess:) 
 This is because Vue Router does not notice any change if the same component is being addressed. With the key, any change to the path will trigger a reload of the component with the new data. -->
+    <RouterView :key="$route.fullPath" v-if="this.map" :map="this.map" :pageName="$route.params.pageName"/>
 
-    <RouterView :key="$route.params.id" />
 
-
-  </div>
+  <!-- </div> -->
 </template>
 <style>
 .formkit-actions {
@@ -48,16 +48,23 @@ body {
 
 .content-container {
   max-width: 1500px;
+  width: 100%;
   margin: 0 auto;
-  background-color: #FAF9F6;
-  padding: 2rem;
+  /* background-color: #FAF9F6; */
+  padding: 0 2rem;
 }
 
 nav {
   background-color: gray;
-  padding: 1rem;
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 110; 
+  /* wtf */
 }
 
 nav a {
@@ -98,9 +105,8 @@ export default {
 
       dataSrcURL: 'http://localhost:1337/api/pages/',
       //?populate=deep
-      navbarItems: []
-
-
+      navbarItems: [],
+      map: new Map()
     }
 
   },
@@ -114,6 +120,22 @@ export default {
       //   this.navbarItems.push(element)
       // });
       this.navbarItems = response.data.data
+      // var map = new Map();
+      this.navbarItems.forEach((el)=>{
+        // this.pages[el.id] = el.attributes.PageName
+        if(el.attributes.URLSlug != null && el.attributes.URLSlug != "Default"){
+          
+          this.map.set(el.attributes.URLSlug, el.id); 
+
+        }else{
+          this.map.set(el.attributes.PageName, el.id); 
+        }
+        
+        //if has value for slug:
+
+      })
+      
+      
       // console.log(this.navbarItems)
       // this.pageObject = response.data.data.attributes.PageContent
       // this.pageObject.forEach(el =>

@@ -23,10 +23,21 @@ use App\Http\Controllers\Controller;
 */
 
 //use controller to send form errors with request
-Route::get('/{id}', function ($id) {
+Route::get('/', function () {
     //route to vue js application
     return view('app');
 });
+
+//-----> Keep page alive by routing everything to app
+Route::get('/{any}', function ($any) {
+
+    // any other url, subfolders also
+    return view('app');
+
+  })->where('any', '.*');
+
+
+// keep routes alive??? on reload its sending me to homepage
 
 // Route::get('/', [Controller::class, 'getPHPVars']);
 
@@ -37,21 +48,21 @@ Route::get('/{id}', function ($id) {
 // });
 
 
-//sending emails
-Route::post('/testroute', function(Request $request) {
-    //next step: Get these from forms :)
-    $name = "ONM Jobs";
-    $content ="email content";
-    $name = $_POST['name'];
-    $attachments = $_FILES; 
-    // $attachments = public_path('favicon.ico');
-    // var_dump($attachments);exit;
-    // var_dump($attachments['file']['full_path']);exit;
+// //sending emails
+// Route::post('/testroute', function(Request $request) {
+//     //next step: Get these from forms :)
+//     $name = "ONM Jobs";
+//     $content ="email content";
+//     $name = $_POST['name'];
+//     $attachments = $_FILES; 
+//     // $attachments = public_path('favicon.ico');
+//     // var_dump($attachments);exit;
+//     // var_dump($attachments['file']['full_path']);exit;
 
-//The email sending is done using the to method on the Mail facade
-    Mail::to('test@onm.de')->send(new ApplicationMail($name, $content, $attachments));
-    //->attach($attachments['file']['full_path']);
-});
+// //The email sending is done using the to method on the Mail facade
+//     Mail::to('test@onm.de')->send(new ApplicationMail($name, $content, $attachments));
+//     //->attach($attachments['file']['full_path']);
+// });
 
 //solve using controller
 

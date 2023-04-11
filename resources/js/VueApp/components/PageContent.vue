@@ -15,6 +15,7 @@ import Text from './Elements/Text.vue'
 import JobList from './Elements/JobOfferList.vue'
 import JobImageList from './Elements/JobImageList.vue'
 import ContentHeader from './Elements/ContentHeader.vue'
+import OfferAndNeed from './Elements/OfferAndNeed.vue'
 
 
 
@@ -97,7 +98,14 @@ import ContentHeader from './Elements/ContentHeader.vue'
                     <Form></Form>
                 </div>
             </div>
-        </div>                                                                                                                                       -->
+            <div v-if="content['__component'] == 'text.offer-and-need'">
+                <OfferAndNeed :offerHeader="content['OfferHeader']" :wantedHeader="content['WeWantHeader']"
+                    :offerLis="content['Offers']" :wantedLis="content['WeWant']"
+                    :offerImageSrc="content.OfferImage.data.attributes.formats.medium.url"
+                    :wantedImageSrc="content.WantedImage.data.attributes.formats.medium.url"></OfferAndNeed>
+            </div>
+
+        </div>
     </div>
 </template>
 

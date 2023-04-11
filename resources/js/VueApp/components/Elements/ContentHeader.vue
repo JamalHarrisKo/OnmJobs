@@ -15,17 +15,7 @@
 <script>
 
 export default {
-    name: 'App',
+    name: 'ContentHeader',
     props: ['textAlignCenter'],
-    data() {
-        return {
-
-        }
-
-    },
-
-    mounted() {
-
-    }
 }
 </script>

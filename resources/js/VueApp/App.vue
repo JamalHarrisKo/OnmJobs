@@ -49,6 +49,9 @@ This is because Vue Router does not notice any change if the same component is b
   </footer>
 </template>
 <style>
+div{
+  box-sizing: border-box;
+}
 .footer{
   background-color: gray;
  

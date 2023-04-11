@@ -4,13 +4,12 @@
     <!-- Add Navigation via router Links -->
     <nav>
 
-      <span v-for="navbarItem in navbarItems">
-        <div v-if="navbarItem.attributes.showInNavigation == true">
+      <span v-for="navbarItem in newNavbarItems">
           <!-- <RouterLink :to="{ path: '/' + navbarItem.id }">{{ navbarItem.attributes.PageName }}</RouterLink> -->
           <RouterLink :to="{ path: '/' + navbarItem.attributes.PageName }" v-if=" navbarItem.attributes.URLSlug == null">{{ navbarItem.attributes.PageName }}</RouterLink>
           <RouterLink :to="{ path: '/' + navbarItem.attributes.URLSlug }" v-else>{{ navbarItem.attributes.PageName }}</RouterLink>
 
-        </div>
+      
       </span>
 
       <!-- <RouterLink to="/1">Home</RouterLink>
@@ -31,11 +30,44 @@
     <!-- dynamic Routing sucess:) 
 This is because Vue Router does not notice any change if the same component is being addressed. With the key, any change to the path will trigger a reload of the component with the new data. -->
     <RouterView :key="$route.fullPath" v-if="this.map" :map="this.map" :pageName="$route.params.pageName"/>
+  
 
 
   <!-- </div> -->
+  <footer>
+    <div class="footer">
+    <div class="page-content">
+    <div class="footer_nav">
+      <span class="Footer_Navitem" v-for="navbarItem in FooterNavItems">
+          <!-- <RouterLink :to="{ path: '/' + navbarItem.id }">{{ navbarItem.attributes.PageName }}</RouterLink> -->
+          <RouterLink :to="{ path: '/' + navbarItem.attributes.PageName }" v-if=" navbarItem.attributes.URLSlug == null">{{ navbarItem.attributes.PageName }}</RouterLink>
+          <RouterLink :to="{ path: '/' + navbarItem.attributes.URLSlug }" v-else>{{ navbarItem.attributes.PageName }}</RouterLink>
+      </span>
+    </div>
+    </div>
+  </div>
+  </footer>
 </template>
 <style>
+.footer{
+  background-color: gray;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.footer_nav{
+  width: 100%;
+  display: flex;
+}
+.Footer_Navitem a{
+  padding: 1rem;
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: fit-content;
+}
 .formkit-actions {
   display: none;
 }
@@ -47,7 +79,7 @@ body {
 }
 
 .content-container {
-  max-width: 1500px;
+  max-width: 80%;
   width: 100%;
   margin: 0 auto;
   /* background-color: #FAF9F6; */
@@ -76,72 +108,44 @@ nav a {
 }
 </style>
 <script>
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   // Your code goes here
-//   setTimeout(function(){
-//     appContainer = document.querySelector("#appErrorDiv");
-//   errors = appContainer.dataset.error
-//   console.log(errors)
-//   }, 5000)
-
-// });
-
-//04.04. make axios call t0 /api/pages
-
-// import { onMounted } from 'vue';    seeContent()
 import axios from 'axios'
 
 export default {
   name: 'App',
-  // props: ['navbarItems'],
-  //container for navbar itmes
-  // navbarItems: [],
-  // setup(){
-  //   navbarItems = []
-  // },
   data() {
     return {
 
       dataSrcURL: 'http://localhost:1337/api/pages/',
       //?populate=deep
+      pageOptionsURL : 'http://localhost:1337/api/options-page?populate=*',
       navbarItems: [],
+      newNavbarItems: [],
+      FooterNavItems: [],
       map: new Map()
     }
 
   },
 
   mounted() {
+    axios.get(this.pageOptionsURL).then((response) => {
+      // console.log(response.data.data)
+      this.newNavbarItems = response.data.data.attributes.MainNav.data
+      this.FooterNavItems = response.data.data.attributes.FooterNav.data
+    }
+    ),
 
     axios.get(this.dataSrcURL).then((response) => {
-      // console.log(response.data.data)
-      // response.data.data.forEach(element => {
-      //   console.log(element.id)
-      //   this.navbarItems.push(element)
-      // });
       this.navbarItems = response.data.data
       // var map = new Map();
       this.navbarItems.forEach((el)=>{
         // this.pages[el.id] = el.attributes.PageName
         if(el.attributes.URLSlug != null && el.attributes.URLSlug != "Default"){
-          
           this.map.set(el.attributes.URLSlug, el.id); 
-
-        }else{
+        }else{ 
           this.map.set(el.attributes.PageName, el.id); 
         }
-        
-        //if has value for slug:
-
       })
-      
-      
-      // console.log(this.navbarItems)
-      // this.pageObject = response.data.data.attributes.PageContent
-      // this.pageObject.forEach(el =>
-      //   this.loadContent(el)
-      // )
-      // this.logContent(this.ContentArray)
+
     }
     )
   },

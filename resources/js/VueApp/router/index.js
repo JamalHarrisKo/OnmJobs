@@ -13,7 +13,7 @@ const routes = [
   // dynamic segments start with a colon
   // { path: '/:id', component: HomeView },
   { path: '/:pageName', component: HomeView },
-  { path: '/', component: HomeView }
+  { path: '/', component: HomeView, props:{HomePage:1}} //TODO find better solution for homeroute
 ]
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

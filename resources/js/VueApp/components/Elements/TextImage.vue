@@ -1,10 +1,21 @@
 <template>
     <div class="content-container">
-        
-            <slot></slot>
-
+        <div class="TextImage">
+            <div class="text_image" v-bind:class="{ textImageLeft: textImageLeft }">
+                <div class="text_image__text">
+                    <h5 class="text_image__text__header">
+                        <slot name="Header"></slot>
+                    </h5>
+                    <p>
+                        <slot name="Text"></slot>
+                    </p>
+                </div>
+                <div class="text_image__image">
+                    <img :src="'http://localhost:1337' + imageSrc">
+                </div>
+            </div>
         </div>
-    
+    </div>
 </template>
 
 
@@ -15,31 +26,41 @@
     margin-bottom: 5rem;
     justify-content: space-between;
 }
-.textImageLeft{
+
+.textImageLeft {
     flex-direction: row-reverse;
 }
 
-.text_image__text{
+.text_image__text {
     width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.text_image__image{
+
+.text_image__image {
     width: 35%;
     display: flex;
     justify-content: center;
 }
+
 .text_image__image img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 10px;
 }
-.text_image__text__header{
+
+.text_image__text__header {
     font-weight: bold;
     font-size: 1rem;
     max-width: 60%;
     margin-top: 0;
 }
 </style>
+<script>
+export default {
+    name: 'App',
+    props: ['textImageLeft', 'imageSrc'],
+}
+</script>

@@ -1,7 +1,19 @@
 <template>
+    <div class="content-container">
+        <div class="flipcards">
+            <div v-for="flipcard in flipCards" class="flipcards__single"
+                v-bind:style="{ backgroundImage: 'url(http://localhost:1337' + flipcard['image']['data']['attributes']['formats']['medium']['url'] + ')' }">
+                <div class="flipcards__single__front">
+                    <p class="flipcards__single__front__title">{{ flipcard['Title'] }}</p>
+                </div>
+                <div class="flipcards__single__back">
+                    <p class="flipcards__single__back__title">{{ flipcard['Title'] }}</p>
+                    <p class="flipcards__single__back__text"> {{ flipcard['text'] }}</p>
+                </div>
 
-        <slot></slot>
-   
+            </div>
+        </div>
+    </div>
 </template>
 <style>
 .flipcards {
@@ -19,7 +31,7 @@
     padding: 1rem;
     margin: 0.5rem;
     text-align: center;
-    
+
 }
 
 .flipcards__single__front {
@@ -35,7 +47,7 @@
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-   
+
 }
 
 .flipcards__single__back {
@@ -52,17 +64,19 @@
     justify-content: center;
     align-items: center;
 }
+
 .flipcards__single__back__title,
 .flipcards__single__front__title,
 .flipcards__single__back__text {
- /* padding: ; */
+    /* padding: ; */
 
- padding: 0 2rem;
+    padding: 0 2rem;
 }
 
-.flipcards__single__back__text{
+.flipcards__single__back__text {
     font-weight: bold;
 }
+
 .flipcards__single:hover .flipcards__single__front {
     transition: ease 0.2s;
     opacity: 0;
@@ -83,3 +97,10 @@
     color: black;
 }
 </style>
+<script>
+export default {
+    name: "flipcards",
+    props:['flipCards']
+}
+
+</script>

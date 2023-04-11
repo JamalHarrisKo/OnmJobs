@@ -1,6 +1,6 @@
 <template>
     <div class="content-container">
-        <slot></slot>
+        <p class="big_text"><slot name="Text"></slot></p>
     </div>
 </template>
 <style>

@@ -1,10 +1,11 @@
 <template>
     <div class="content-container">
-        <slot></slot>
+        <a class="onm-button" v-bind:class="{ negativeMarginTop: negativeMarginTop, alignCenter: alignCenter }"
+            :href="href"> <slot name="text"></slot></a>
     </div>
 </template>
 <style>
-.onm-button{
+.onm-button {
     display: block;
     width: fit-content;
     text-decoration: none;
@@ -16,3 +17,10 @@
 
 }
 </style>
+<script>
+
+export default {
+    name: 'Button',
+    props: ['negativeMarginTop', 'alignCenter', 'href'],
+}
+</script>

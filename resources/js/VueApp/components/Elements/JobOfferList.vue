@@ -1,6 +1,25 @@
 <template>
     <div class="content-container">
-        <slot></slot>
+        <div class="job_offer_list">
+            <div v-for="job_ad in jobAds" class="job_offer_list__single">
+                <div class="job_offer_list__single__entry" v-if="job_ad['attributes']['page']['data'] != null">
+                    <RouterLink :to="{ path: '/' + job_ad['attributes']['page']['data']['attributes']['PageName'] }"
+                        v-if="job_ad['attributes']['page']['data']['attributes']['URLSlug'] == null || job_ad['attributes']['page']['data']['attributes']['URLSlug'] == 'Default'">
+                        <p class="job_offer_list__single__title">{{ job_ad['attributes']['Title'] }}</p>
+                        <p class="job_offer_list__single__date">{{ job_ad['attributes']['Date'] }}</p>
+                    </RouterLink>
+                    <RouterLink :to="{ path: '/' + job_ad['attributes']['page']['data']['attributes']['URLSlug'] }" v-else>
+                        <p class="job_offer_list__single__title">{{ job_ad['attributes']['Title'] }}</p>
+                        <p class="job_offer_list__single__date">{{ job_ad['attributes']['Date'] }}</p>
+                    </RouterLink>
+
+                </div>
+                <div class="job_offer_list__single__entry" v-else>
+                    <p class="job_offer_list__single__title">{{ job_ad['attributes']['Title'] }}</p>
+                    <p class="job_offer_list__single__date">{{ job_ad['attributes']['Date'] }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <style>
@@ -40,9 +59,18 @@
     padding: 1rem;
     color: black;
 }
-.job_offer_list__single__entry, .job_offer_list a{
+
+.job_offer_list__single__entry,
+.job_offer_list a {
     display: flex;
     justify-content: center;
     text-decoration: none;
 }
 </style>
+
+<script>
+export default {
+    name:'joblist',
+    props:['jobAds']
+}
+</script>

@@ -1,5 +1,6 @@
 <template>
-    <div class="background-container--gray">
+    <div class="offerAndNeedContiainer">
+    <div class="background-container background-container--gray">
         <div class="content-container">
             <div class="offerAndNeed">
                 <div class="offer">
@@ -10,24 +11,30 @@
                         </ul>
                     </div>
                     <div class="offerAndNeedImage__container">
-                        <div class="offerAndNeedImage__container__overlay offerAndNeedImage__container__overlay--offer">
-                        </div>
-                        <img class='offerAndNeedImage' :src="'http://localhost:1337' + offerImageSrc">
+
+                        <!-- <img class='offerAndNeedImage' :src="'http://localhost:1337' + offerImageSrc"> -->
                     </div>
                 </div>
             </div>
         </div>
+        <div class="offerAndNeed_background_image offerAndNeed_background_image--offer"
+            v-bind:style="{ backgroundImage: 'url(http://localhost:1337' + offerImageSrc + ')' }">
+            <div class="offerAndNeedImage__container__overlay offerAndNeedImage__container__overlay--offer">
+            </div>
+        </div>
     </div>
-    <!-- REMOVE IMAGES ! -->
 
     <div class="background-container background-container--orange">
+        <div class="offerAndNeed_background_image offerAndNeed_background_image--wanted"
+            v-bind:style="{ backgroundImage: 'url(http://localhost:1337' + wantedImageSrc + ')' }">
+            <div class="offerAndNeedImage__container__overlay offerAndNeedImage__container__overlay--wanted">
+                        </div>
+        </div>
         <div class="content-container">
             <div class="offerAndNeed">
                 <div class="wanted">
                     <div class="offerAndNeedImage__container">
-                        <div class="offerAndNeedImage__container__overlay offerAndNeedImage__container__overlay--wanted">
-                        </div>
-                        <img class='offerAndNeedImage' :src="'http://localhost:1337' + wantedImageSrc">
+                  
                     </div>
                     <div class="wanted__list">
                         <h4 class="wantedHeader">{{ wantedHeader }}</h4>
@@ -39,27 +46,64 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 <style>
+.offerAndNeedContiainer{
+    margin-bottom: 5rem;
+    /* margin-top: -3rem; */
+}
 .background-container--orange {
     background-color: orange;
 }
+.offerAndNeed ul{
+    margin-bottom: 1rem;
+    list-style: none;
+    padding: 0;
+}
+.offerAndNeed ul li{
+    margin-bottom: 1rem;
+    display: flex;
+    line-height: 1.5;
+ 
+}
+.offerAndNeed ul li::before{
+    content: '\2714';
+    padding-right: 0.5rem;
+    height: 100%;
+    display: block;
 
+}
 .background-container--gray {
     background-color: #f6f6f6;
 }
 
-/* .blend_bg{
-    widows: 100%;
-    height: 80px;
+.background-container {
+    position: relative;
+    display: flex;
 }
-.blend_bg--white-gray{
-    background-image: linear-gradient(rgba(255,255,255, 1),rgba(246,246,246, 1));
-}
-.blend_bg--gray-orange{
-    background-image: linear-gradient(rgba(246,246,246, 1),rgba(246,246,246, 1), rgba(246,246,246, 1), rgba(246,246,246, 1),rgba(0,0,0, 1));
+.offerHeader,
+.wantedHeader{
+    font-size: 3rem;
+    margin: 2rem 0;
 
-} */
+}
+
+.offerAndNeed_background_image {
+    position: absolute;
+    width: 50%;
+    background-size: cover;
+    height: 100%;
+}
+
+.offerAndNeed_background_image--offer {
+    right: 0;
+    top: 0;
+}
+.offerAndNeed_background_image--wanted {
+    left: 0;
+    top: 0;
+}
 
 .offerAndNeedImage__container__overlay {
     position: absolute;

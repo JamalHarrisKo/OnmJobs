@@ -39,7 +39,7 @@
 }
 
 .text_image__image {
-    width: 35%;
+    width: 38%;
     display: flex;
     justify-content: center;
 }

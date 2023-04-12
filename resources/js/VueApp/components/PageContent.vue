@@ -16,6 +16,8 @@ import JobList from './Elements/JobOfferList.vue'
 import JobImageList from './Elements/JobImageList.vue'
 import ContentHeader from './Elements/ContentHeader.vue'
 import OfferAndNeed from './Elements/OfferAndNeed.vue'
+import Video from './Elements/Video.vue'
+
 
 
 
@@ -28,6 +30,7 @@ import OfferAndNeed from './Elements/OfferAndNeed.vue'
                 <HeaderHero :background-image="content['backgroundImage']['data']['attributes']['formats']['large']['url']">
                     <template #Header>{{ content['Header'] }}</template>
                     <template #HeaderSub>{{ content['HeaderSub'] }}</template>
+                    <template #Text>{{ content['Text'] }}</template>
                 </HeaderHero>
             </div>
             <div v-if="content['__component'] == 'text.page-header'">
@@ -80,7 +83,7 @@ import OfferAndNeed from './Elements/OfferAndNeed.vue'
                 </Text>
             </div>
             <div v-if="content['__component'] == 'text.big-text'">
-                <BigText>
+                <BigText :orange="content.orangeText" :textAlignCenter="content.textAlignCenter" :reduceSpaceTop="content.reduceSpaceTop">
                     <template #Text>{{ content['Text'] }}</template>
                 </BigText>
             </div>
@@ -103,6 +106,11 @@ import OfferAndNeed from './Elements/OfferAndNeed.vue'
                     :offerLis="content['Offers']" :wantedLis="content['WeWant']"
                     :offerImageSrc="content.OfferImage.data.attributes.formats.medium.url"
                     :wantedImageSrc="content.WantedImage.data.attributes.formats.medium.url"></OfferAndNeed>
+            </div>
+            <div v-if="content['__component'] == 'media.video'">
+              
+                <Video :videoSource="content.Video.data.attributes.url">
+                </Video>
             </div>
 
         </div>

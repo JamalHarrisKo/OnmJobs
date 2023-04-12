@@ -1,21 +1,17 @@
-// import './bootstrap';
-
-// //create vue application
-// import { createApp } from 'vue'
-// //Structure that contains Application
-// import router from './VueApp/router'
-
-// import App from './VueApp/App.vue'
-
-// const app = createApp(App)
-
-// app.use(router)
-
-// app.mount('#app')
-
 import { createApp } from 'vue'
 import App from './VueApp/App.vue'
 import router from './VueApp/router'
+
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+/* import specific icons */
+import { faTwitter, faFacebook, faLinkedin, faXing } from '@fortawesome/free-brands-svg-icons'
+
+/* add icons to the library */
+library.add(faTwitter, faFacebook, faLinkedin, faXing )
+
 
 //form validation
 import name from './VueApp/custom-form-rules/name'
@@ -28,7 +24,8 @@ import { createMultiStepPlugin } from '@formkit/addons'
 import '@formkit/themes/genesis'
 import '@formkit/addons/css/multistep'
 
-const app = createApp(App)
+const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
+
 
 app.use(router)
 app.use(formKitPlugin, defaultConfig({

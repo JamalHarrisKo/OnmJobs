@@ -29,62 +29,62 @@
     <!-- </FormKit>
         </FormKit>
     </FormKit> -->
+    <div class="formContainer">
 
+        <FormKit id="jobApplication" type="form" action="/sendApplication" method="POST" enctype="multipart/form-data" s>
+            <FormKit type="multi-step" tab-style="progress" :allow-incomplete="false">
+                <FormKit type="step" name="Angaben zu deiner Person">
+                    <!-- content for stepOne goes here! -->
 
-    <FormKit id="jobApplication" type="form" action="/sendApplication" method="POST" enctype="multipart/form-data" s>
-        <FormKit type="multi-step" tab-style="progress" :allow-incomplete="false">
-            <FormKit type="step" name="Angaben zu deiner Person">
-                <!-- content for stepOne goes here! -->
+                    <!-- custom validation rule and custom validation message-->
+                    <FormKit type="text" label="Vorname" name="vorname" validation="required|name" :validation-messages="{
+                        name: 'name cannot be nameless or nonname',
+                    }" />
+                    <FormKit type="text" label="Nachname" name="nachname" validation="required|name" :validation-messages="{
+                        name: 'name cannot be nameless or nonname',
+                    }" />
+                    <FormKit type="email" label="E-Mail-Adresse" validation="required|email" />
+                    <FormKit type="tel" label="Telefonnummer" validation="required" />
 
-                <!-- custom validation rule and custom validation message-->
-                <FormKit type="text" label="Vorname" name="vorname" validation="required|name" :validation-messages="{
-                    name: 'name cannot be nameless or nonname',
-                }" />
-                <FormKit type="text" label="Nachname" name="nachname" validation="required|name" :validation-messages="{
-                    name: 'name cannot be nameless or nonname',
-                }" />
-                <FormKit type="email" label="E-Mail-Adresse" validation="required|email" />
-                <FormKit type="tel" label="Telefonnummer" validation="required" />
+                </FormKit>
+                <FormKit type="step" name="Programmierkenntnisse?">
+                    <!-- content for stepOne goes here! -->
+                    <p>bitte versuche dich in den nachfolgenden Bereichen realistisch selbst einzuschätzen: </p>
 
-            </FormKit>
-            <FormKit type="step" name="Programmierkenntnisse?">
-                <!-- content for stepOne goes here! -->
-                <p>bitte versuche dich in den nachfolgenden Bereichen realistisch selbst einzuschätzen: </p>
+                    <FormKit type="radio" label="HTML & CSS"
+                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    <FormKit type="radio" label="PHP"
+                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    <FormKit type="radio" label="MySQL"
+                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    <FormKit type="radio" label="JavaScript"
+                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                </FormKit>
+                <FormKit type="step" name="Frontend-Frameworks?">
+                    <!-- content for stepOne goes here! -->
+                    <FormKit type="radio" label="Frontend-Frameworks" help="(zum Beispiel Boostrap, HTML5 Boilerplate etc.)"
+                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
 
-                <FormKit type="radio" label="HTML & CSS"
-                    :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                <FormKit type="radio" label="PHP"
-                    :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                <FormKit type="radio" label="MySQL"
-                    :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                <FormKit type="radio" label="JavaScript"
-                    :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-            </FormKit>
-            <FormKit type="step" name="Frontend-Frameworks?">
-                <!-- content for stepOne goes here! -->
-                <FormKit type="radio" label="Frontend-Frameworks" help="(zum Beispiel Boostrap, HTML5 Boilerplate etc.)"
-                    :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                </FormKit>
+                <FormKit type="step" name="CMS?">
+                    <!-- content for stepOne goes here! -->
+                    <p>bitte versuche dich in den nachfolgenden Bereichen realistisch selbst einzuschätzen: </p>
 
-            </FormKit>
-            <FormKit type="step" name="CMS?">
-                <!-- content for stepOne goes here! -->
-                <p>bitte versuche dich in den nachfolgenden Bereichen realistisch selbst einzuschätzen: </p>
-
-                <FormKit type="radio" label="Wordpress"
-                    :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                <FormKit type="radio" label="Typo3"
-                    :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-            </FormKit>
-            <FormKit type="step" name="Abschluss">
-                <!-- content for stepOne goes here! -->
-                <FormKit type="file" name='file' label="Documents" accept=".pdf,.doc,.docx,.xml,.md,.csv"
-                    help="Select as many documents as you would like." multiple="true" validation="required" />
-                <FormKit type="submit" label="Absenden" />
-                <FormKit type="textarea" label="Sonstige Kenntnisse im Bereich" rows="10" placeholder="" />
+                    <FormKit type="radio" label="Wordpress"
+                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    <FormKit type="radio" label="Typo3"
+                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                </FormKit>
+                <FormKit type="step" name="Abschluss">
+                    <!-- content for stepOne goes here! -->
+                    <FormKit type="file" name='file' label="Documents" accept=".pdf,.doc,.docx,.xml,.md,.csv"
+                        help="Select as many documents as you would like." multiple="true" validation="required" />
+                    <FormKit type="submit" label="Absenden" />
+                    <FormKit type="textarea" label="Sonstige Kenntnisse im Bereich" rows="10" placeholder="" />
+                </FormKit>
             </FormKit>
         </FormKit>
-    </FormKit>
-
+    </div>
     <!-- <form id="jobApplication" action="/sendApplication" method="POST" enctype="multipart/form-data">
 
     // TODO request errors via xhr -->
@@ -134,6 +134,9 @@
 </script>
 
 <style>
+.formContainer{
+    margin-bottom: 5rem;
+}
 .formkit-wrapper {
     margin: 0 auto;
     /* margin-bottom: 5rem; */
@@ -142,7 +145,8 @@
 .formkit-outer[data-type="multi-step"]>[data-tab-style="progress"]>.formkit-tabs .formkit-tab-label {
     white-space: break-spaces !important;
 }
-.formkit-outer[data-type="multi-step"] > .formkit-wrapper{
+
+.formkit-outer[data-type="multi-step"]>.formkit-wrapper {
     min-width: 800px;
     max-width: 100%;
 }

@@ -21,7 +21,7 @@
     margin-bottom: 5rem;
     max-width: 800px;
     margin: 0 auto;
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
 }
 
 .sectionHeader__header {

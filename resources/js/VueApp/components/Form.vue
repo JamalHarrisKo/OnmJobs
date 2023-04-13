@@ -48,54 +48,50 @@
 
                 </FormKit>
                 <FormKit type="step" name="Programmierkenntnisse?">
-                    <!-- content for stepOne goes here! -->
                     <p>bitte versuche dich in den nachfolgenden Bereichen realistisch selbst einzuschätzen: </p>
-
-                    <FormKit type="radio" label="HTML & CSS"
-                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                    <FormKit type="radio" label="PHP"
-                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                    <FormKit type="radio" label="MySQL"
-                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                    <FormKit type="radio" label="JavaScript"
-                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    <div class="radio_flex">
+                        <FormKit type="radio" label="HTML & CSS"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                        <FormKit type="radio" label="PHP"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                        <FormKit type="radio" label="MySQL"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                        <FormKit type="radio" label="JavaScript"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    </div>
                 </FormKit>
                 <FormKit type="step" name="Frontend-Frameworks?">
                     <!-- content for stepOne goes here! -->
-                    <FormKit type="radio" label="Frontend-Frameworks" help="(zum Beispiel Boostrap, HTML5 Boilerplate etc.)"
-                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    <div class="radio_flex">
 
+                        <FormKit type="radio" label="Frontend-Frameworks"
+                            help="(zum Beispiel Boostrap, HTML5 Boilerplate etc.)"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    </div>
                 </FormKit>
                 <FormKit type="step" name="CMS?">
                     <!-- content for stepOne goes here! -->
                     <p>bitte versuche dich in den nachfolgenden Bereichen realistisch selbst einzuschätzen: </p>
+                    <div class="radio_flex">
 
-                    <FormKit type="radio" label="Wordpress"
-                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                    <FormKit type="radio" label="Typo3"
-                        :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                        <FormKit type="radio" label="Wordpress"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                        <FormKit type="radio" label="Typo3"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                    </div>
                 </FormKit>
                 <FormKit type="step" name="Abschluss">
                     <!-- content for stepOne goes here! -->
-                    <FormKit type="file" name='file' label="Documents" accept=".pdf,.doc,.docx,.xml,.md,.csv"
-                        help="Select as many documents as you would like." multiple="true" validation="required" />
-                    <FormKit type="submit" label="Absenden" />
+                    <FormKit type="file" name='file' placeholder="hell" label="Dokumente" accept=".pdf,.doc,.docx,.xml,.md,.csv"
+                        help="Feld anklicken um Datein Auszuwählen, oder per drag-and-drop einfügen (mehrere Datein können durch das halten der strg Taste ausgewählt werden)"
+                        multiple="true" validation="required" />
+
                     <FormKit type="textarea" label="Sonstige Kenntnisse im Bereich" rows="10" placeholder="" />
+                    <FormKit wrapper-class="submit_wrapper" type="submit" label="Jetzt Bewerben" />
                 </FormKit>
             </FormKit>
         </FormKit>
     </div>
-    <!-- <form id="jobApplication" action="/sendApplication" method="POST" enctype="multipart/form-data">
-
-    // TODO request errors via xhr -->
-    <!-- <label for="name">Name:</label>
-        <input type="text" name="name">
-        <label for="text">Text:</label>
-            <input type="text" name="text">
-            <label for="file">Datei:</label>
-            <input type="file" name="file">
-            <input type="submit">
-        </form> -->
 </template>
 
 <script>
@@ -134,9 +130,57 @@
 </script>
 
 <style>
-.formContainer{
+.radio_flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.radio_flex .formkit-outer {
+    min-width: 300px;
+    margin: 1rem;
+    flex-grow: 1;
+}
+
+/* radio buttons */
+[data-type="checkbox"] .formkit-input:checked~.formkit-decorator .formkit-icon,
+[data-type="radio"] .formkit-input:checked~.formkit-decorator .formkit-icon {
+    color: #ff8c00 !important;
+}
+
+[data-type="checkbox"] .formkit-input:checked~.formkit-decorator,
+[data-type="radio"] .formkit-input:checked~.formkit-decorator {
+    box-shadow: 0 0 0 1px #ff8c00 !important;
+}
+
+.submit_wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+:root {
+    --multistep-color-success: #ff8c00 !important;
+}
+
+[data-type="button"] .formkit-input {
+    background-color: white !important;
+    border: 2px solid #ff8c00 !important;
+    color: #ff8c00 !important;
+}
+
+[data-type="submit"] .formkit-input {
+    background-color: #ff8c00 !important;
+    font-size: 1.1rem !important;
+    /* text-transform: uppercase; */
+}
+
+.formContainer {
     margin-bottom: 5rem;
 }
+
 .formkit-wrapper {
     margin: 0 auto;
     /* margin-bottom: 5rem; */

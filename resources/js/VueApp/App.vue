@@ -55,6 +55,10 @@
   </footer>
 </template>
 <style>
+
+body{
+  color: #2a2c2c;
+}
 .nav_items {
   position: absolute;
   left: 50%;
@@ -106,7 +110,7 @@ div {
 }
 
 .footer_social__single a :hover {
-  color: orange;
+  color: #ff8c00;
   transition: ease 0.2s;
 
 }
@@ -183,7 +187,6 @@ nav a {
 </style>
 <script>
 import axios from 'axios'
-
 export default {
   name: 'App',
   data() {

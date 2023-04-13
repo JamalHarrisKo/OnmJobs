@@ -64,7 +64,7 @@ export default {
     align-items: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    margin-bottom: 3rem;
+    margin-bottom: 7rem;
 
 
 }

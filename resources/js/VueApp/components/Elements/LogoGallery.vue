@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
 }
 
 .logo_gallery__single {

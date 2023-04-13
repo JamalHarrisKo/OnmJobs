@@ -23,7 +23,7 @@
 .text_image {
     display: flex;
     /* justify-content: space-between; and make it not 100% */
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
     justify-content: space-between;
 }
 
@@ -36,12 +36,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 0;
 }
 
 .text_image__image {
     width: 38%;
     display: flex;
     justify-content: center;
+    margin-bottom: 0;
 }
 
 .text_image__image img {

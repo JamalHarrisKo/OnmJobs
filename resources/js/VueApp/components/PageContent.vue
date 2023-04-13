@@ -17,6 +17,10 @@ import JobImageList from './Elements/JobImageList.vue'
 import ContentHeader from './Elements/ContentHeader.vue'
 import OfferAndNeed from './Elements/OfferAndNeed.vue'
 import Video from './Elements/Video.vue'
+import ShortProfile from './Elements/ShortProfile.vue'
+import Benefits from './Elements/Benefits.vue'
+
+
 
 
 
@@ -55,7 +59,6 @@ import Video from './Elements/Video.vue'
                     <template #text>{{ content['Text'] }}</template>
                 </Button>
             </div>
-
             <div v-if="content['__component'] == 'text.text-image'">
                 <TextImage :textImageLeft="content.imgLeft"
                     :imageSrc="content['Image']['data']['attributes']['formats']['medium']['url']">
@@ -109,10 +112,15 @@ import Video from './Elements/Video.vue'
             </div>
             <div v-if="content['__component'] == 'media.video'">
               
-                <Video :videoSource="content.Video.data.attributes.url">
-                </Video>
+                <Video :videoSource="content.Video.data.attributes.url" :reduceSpaceTop="content.reduceSpaceTop"></Video>
             </div>
-
+            <div v-if="content['__component'] == 'text.short-profile'">
+                <ShortProfile :Header="content.Header" :Text="content.Text"></ShortProfile>
+            </div>
+            <div v-if="content['__component'] == 'text.further-benefits'">              
+                <Benefits :Header="content.Header" :Benefits="content.Benefits"></Benefits>
+            </div>
+           
         </div>
     </div>
 </template>
@@ -171,7 +179,7 @@ export default {
 </script>
 <style>
 .negativeMarginTop {
-    margin-top: -3rem !important;
+    margin-top: -4rem !important;
 }
 
 .alignCenter {

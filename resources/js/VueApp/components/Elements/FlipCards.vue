@@ -20,12 +20,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 5rem;
+    margin-bottom: 6.5rem;
 }
 
 .flipcards__single {
     height: 350px;
-    width: 350px;
+    width: 470px;
     position: relative;
     background-size: cover;
     padding: 1rem;
@@ -47,7 +47,6 @@
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-
 }
 
 .flipcards__single__back {
@@ -57,7 +56,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: orange;
+    background-color: #ff8c00;
     color: white;
     display: flex;
     flex-direction: column;

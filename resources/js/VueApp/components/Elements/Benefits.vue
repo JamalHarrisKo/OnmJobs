@@ -1,19 +1,21 @@
-<template>
- 
-        <div class="content-container">
-            <ul class="ul">
-                <p class="ul__header" v-if="contentHeader">{{ contentHeader }}</p>
-                <li v-for="li in listItems">{{ li.ListItem }}</li>
-            </ul>
 
+<template>
+    <div class="content-container">
+        <div class="benefits">
+            <h3 class="benefits__header">{{ Header }}</h3>
+            <ul class="ul">
+                <li v-for="benefit in Benefits"> {{ benefit.ListItem }}</li>
+            </ul>
         </div>
-    
+    </div>
 </template>
 <style>
+.benefits{
+    margin-bottom: 6rem;
+}
 .ul {
     padding-left: 0;
     max-width: 800px;
-    margin-bottom: 6rem;
     list-style: none;
 }
 
@@ -28,15 +30,10 @@
  display: block;
  padding-right: 0.5rem;
 }
-
-.ul__header {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
 </style>
 <script>
 export default {
-    name: 'list',
-    props: ['listItems', 'contentHeader']
+name:'ShortProfile',
+props:['Header', 'Benefits']
 }
 </script>

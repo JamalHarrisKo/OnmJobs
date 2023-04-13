@@ -4,7 +4,7 @@ import PageContent from '../components/PageContent.vue'
 <template>
   <main>
     <PageContent :pageName="$route.params.pageName" v-if="this.pageContentID" :pageContentID="this.pageContentID"
-      :key="this.map.get(this.pageName)"></PageContent>
+      :key="$route.params.pageName"></PageContent>
   </main>
 </template>
 <script>
@@ -33,9 +33,9 @@ export default {
     )
     //404 Page
     if (this.$route.params.pageName != null && !this.map.get(this.$route.params.pageName)) {
-      window.location = `/404`
+      // window.location = `/404`
+      console.log(this.map)
     }
   },
-
 }
 </script>

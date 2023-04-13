@@ -24,7 +24,7 @@
 </template>
 <style>
 .job_offer_list {
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
 }
 
 .job_offer_list__single {
@@ -35,12 +35,12 @@
 }
 
 .job_offer_list__single:hover .job_offer_list__single__button {
-    color: orange;
-    border: 2px solid orange;
+    color: #ff8c00;
+    border: 2px solid #ff8c00;
 }
 
 .job_offer_list__single:hover .job_offer_list__single__title {
-    color: orange;
+    color: #ff8c00;
 }
 
 .job_offer_list__single:nth-child(2n) {

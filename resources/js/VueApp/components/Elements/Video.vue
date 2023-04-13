@@ -1,6 +1,6 @@
 <template>
     <div class="content-container">
-        <video class="contentVideo" autoplay controls loop muted>
+        <video  v-bind:class="{ negativeMarginTop: reduceSpaceTop }" class="contentVideo" autoplay controls loop muted>
             <source :src="'http://localhost:1337' + videoSource">
         </video>
     </div>
@@ -9,13 +9,12 @@
 .contentVideo{
     width: 100%;
     border-radius: 30px;
-    
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
 }
 </style>
 <script>
 export default {
     name:'Video',
-    props:['videoSource']
+    props:['videoSource', 'reduceSpaceTop']
 }
 </script>

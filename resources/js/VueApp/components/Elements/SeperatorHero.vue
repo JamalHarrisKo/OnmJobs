@@ -23,7 +23,7 @@
     color: white;
     position: relative;
     width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 7rem;
 }
 
 .hero_seperator__overlay {

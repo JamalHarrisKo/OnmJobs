@@ -1,5 +1,6 @@
+
 <template>
-    <div class="content-container">
+<div class="content-container">
         <div class="text"><slot name="Text"></slot></div>
 
         
@@ -7,6 +8,6 @@
 </template>
 <style>
 .text{
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
 }
 </style>

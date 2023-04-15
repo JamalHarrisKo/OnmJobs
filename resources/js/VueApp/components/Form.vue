@@ -1,92 +1,98 @@
 <template>
-    <!-- <FormKit type="form" action="/false">
-        <FormKit type="multi-step" tab-style="progress" :allow-incomplete="false">
-            <FormKit type="step" name="stepOne"> -->
-    <!-- content for stepOne goes here! -->
-
-    <!-- custom validation rule and custom validation message-->
-    <!-- <FormKit type="text" label="Name" validation="required|name" :validation-messages="{
-                    name: 'name cannot be nameless or nonname',
-                }" />
-                <FormKit type="text" label="Nachname" validation="required" />
-                <FormKit type="email" label="Your Email" validation="required|email" />
-            </FormKit>
-            <FormKit type="step" name="stepTwo"> -->
-    <!-- content for stepOne goes here! -->
-    <!-- <FormKit type="radio" label="Wie Gut ist dein Wissen" help="selbsteinschätzung"
-                    :options="['gar nicht gut', 'okay', 'Top']" />
-            </FormKit>
-            <FormKit type="step" name="stepThree"> -->
-    <!-- content for stepOne goes here! -->
-    <!-- <FormKit type="date" name="date" label="Wann kannst du Anfangen?" validation="required" />
-                <FormKit type="select" name="erfahrung" label="Welche Option?" placeholder="auswahl..."
-                    :options="['option 1', 'HTML', 'CSS', 'Option 4']" />
-            </FormKit>
-            <FormKit type="step" name="stepFour"> -->
-    <!-- content for stepOne goes here! -->
-    <!-- <p>vielen Dank für deine Bewerbung! Klicke auf absenden um deine Bewerbung abszuschicken</p> -->
-    <!-- <FormKit type="submit" label="absenden" /> -->
-    <!-- </FormKit>
-        </FormKit>
-    </FormKit> -->
     <div class="formContainer">
-
-        <FormKit id="jobApplication" type="form" action="/sendApplication" method="POST" enctype="multipart/form-data" s>
+        <FormKit id="jobApplication" type="form" action="/sendApplication" method="POST" enctype="multipart/form-data">
             <FormKit type="multi-step" tab-style="progress" :allow-incomplete="false">
                 <FormKit type="step" name="Angaben zu deiner Person">
-                    <!-- content for stepOne goes here! -->
-
-                    <!-- custom validation rule and custom validation message-->
-                    <FormKit type="text" label="Vorname" name="vorname" validation="required|name" :validation-messages="{
-                        name: 'name cannot be nameless or nonname',
+                    <FormKit type="text" label="Vorname" name="firstname" validation="required|alpha" :validation-messages="{
+                        alpha: 'der Vorname darf keine Zahlen enthalten',
+                        required: 'dies ist ein Pflichtfeld'
                     }" />
-                    <FormKit type="text" label="Nachname" name="nachname" validation="required|name" :validation-messages="{
-                        name: 'name cannot be nameless or nonname',
-                    }" />
-                    <FormKit type="email" label="E-Mail-Adresse" validation="required|email" />
-                    <FormKit type="tel" label="Telefonnummer" validation="required" />
+                    <FormKit type="text" label="Nachname" name="lastname" validation="required|alpha" :validation-messages="{
+                        alpha: 'der Nachname darf keine Zahlen enthalten',
+                        required: 'dies ist ein Pflichtfeld'
 
+                    }" />
+                    <FormKit type="email" name="email" label="E-Mail-Adresse" validation="required|email"
+                        :validation-messages="{
+                            email: 'bitte eine Gültige E-Mail verwenden',
+                            required: 'dies ist ein Pflichtfeld'
+
+                        }" />
+                    <FormKit type="tel" name="phone" label="Telefonnummer" validation="required|matches:/^[0-9\s]*$/" :validation-messages="{
+                        required: 'dies ist ein Pflichtfeld',
+                        matches: 'die Telefonnummer darf nur aus Zahlen bestehen'
+                    }" />
                 </FormKit>
                 <FormKit type="step" name="Programmierkenntnisse?">
                     <p>bitte versuche dich in den nachfolgenden Bereichen realistisch selbst einzuschätzen: </p>
                     <div class="radio_flex">
-                        <FormKit type="radio" label="HTML & CSS"
-                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                        <FormKit type="radio" label="PHP"
-                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                        <FormKit type="radio" label="MySQL"
-                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                        <FormKit type="radio" label="JavaScript"
-                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                        <FormKit type="radio" name="html_css" label="HTML & CSS"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']"
+                            validation="required" :validation-messages="{
+                                required: 'dies ist ein Pflichtfeld'
+                            }" />
+                        <FormKit type="radio" name='php' label="PHP"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']"
+                            validation="required" :validation-messages="{
+                                required: 'dies ist ein Pflichtfeld'
+                            }" />
+                        <FormKit type="radio" name="mysql" label="MySQL"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']"
+                            validation="required" :validation-messages="{
+                                required: 'dies ist ein Pflichtfeld'
+                            }" />
+                        <FormKit type="radio" name='js' label="JavaScript"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']"
+                            validation="required" :validation-messages="{
+                                required: 'dies ist ein Pflichtfeld'
+                            }" />
                     </div>
                 </FormKit>
                 <FormKit type="step" name="Frontend-Frameworks?">
-                    <!-- content for stepOne goes here! -->
                     <div class="radio_flex">
-
-                        <FormKit type="radio" label="Frontend-Frameworks"
+                        <FormKit type="radio" name="frontendFrameworks" label="Frontend-Frameworks"
                             help="(zum Beispiel Boostrap, HTML5 Boilerplate etc.)"
-                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']"
+                            validation="required" :validation-messages="{
+                        required: 'dies ist ein Pflichtfeld'
+                    }" />
                     </div>
                 </FormKit>
                 <FormKit type="step" name="CMS?">
-                    <!-- content for stepOne goes here! -->
                     <p>bitte versuche dich in den nachfolgenden Bereichen realistisch selbst einzuschätzen: </p>
                     <div class="radio_flex">
 
-                        <FormKit type="radio" label="Wordpress"
-                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
-                        <FormKit type="radio" label="Typo3"
-                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" />
+                        <FormKit type="radio" name='wordpress' label="Wordpress"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" 
+                            validation="required" :validation-messages="{
+                        required: 'dies ist ein Pflichtfeld'
+                    }"/>
+                        <FormKit type="radio" name='typo3' label="Typo3"
+                            :options="['Keine Kentnisse', 'Schon mal gehört', 'Schon mal ausprobiert', 'Gute Kenntnisse']" 
+                            validation="required" :validation-messages="{
+                        required: 'dies ist ein Pflichtfeld'
+                    }"/>
                     </div>
                 </FormKit>
                 <FormKit type="step" name="Abschluss">
-                    <!-- content for stepOne goes here! -->
-                    <FormKit type="file" name='file' placeholder="hell" label="Dokumente" accept=".pdf,.doc,.docx,.xml,.md,.csv"
-                        help="Feld anklicken um Datein Auszuwählen, oder per drag-and-drop einfügen (mehrere Datein können durch das halten der strg Taste ausgewählt werden)"
-                        multiple="true" validation="required" />
-
-                    <FormKit type="textarea" label="Sonstige Kenntnisse im Bereich" rows="10" placeholder="" />
+                    <FormKit type="file" name='file' label="Dokumente"
+                        accept=".pdf,.docx,.xml,.md,.csv"
+                        help="Feld anklicken um PDF-Datein Auszuwählen, oder per drag-and-drop einfügen (mehrere Datein können durch das halten der strg Taste ausgewählt werden)"
+                        multiple="true" validation="(500)required|*file" :validation-messages="{
+                            required:'dies ist ein Pflichtfeld',
+                            file: 'bitte Datein vom Typ \'.pdf\' auswählen'
+                        }"/>
+                    <FormKit type="textarea" name="bonusText" label="Sonstige Kenntnisse im Bereich" rows="10"
+                        placeholder="" />
+                    <FormKit name="jobapplication" type="hidden" value="PHP Entwickler" />
+                    <FormKit type="checkbox" label="Datenschutz" validation="accepted" :validation-messages="{
+                        accepted:'bitte aktzeptiere die Datenschutzbedingungen'
+                    }" />
+                    <p class="gdpr_text">Ja, ich habe die <a href="https://google.de">Datenschutzerklärung</a> zur Kenntnis
+                        genommen und bin damit einverstanden, dass die von mir angegebenen Daten elektronisch erhoben und
+                        gespeichert werden. Meine Daten werden dabei nur streng zweckgebunden zur Bearbeitung und
+                        Beantwortung meiner Bewerbung benutzt. Mit dem Absenden des Bewerbungsformulars erkläre ich mich mit
+                        der Verarbeitung einverstanden.</p>
                     <FormKit wrapper-class="submit_wrapper" type="submit" label="Jetzt Bewerben" />
                 </FormKit>
             </FormKit>
@@ -96,40 +102,24 @@
 
 <script>
 
-// /* SmtpJS.com - v3.0.0 */
-// var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
-// Email.send({
-//     Host : "onm.info",
-//     Username : "hotelsuite@onm.info",
-//     Password : "Y_brcsnq0is64TYg1",
-//     To : 'jh@onm.de',
-//     From : "hotelsuite@onm.info",
-//     Subject : "This is the subject",
-//     Body : "And this is the body"
-// }).then(
-//   message => alert(message)
-// );
-
-// cant use this --> only works with elastic mail
-
-// send email using strapi
-// await strapi.plugins['email'].services.email.send({
-//     to: 'jh@onm.de',
-//     from: 'info@onm.de', //e.g. single sender verification in SendGrid
-//     // cc: 'valid email address',
-//     // bcc: 'valid email address',
-//     replyTo: 'info@onm.de',
-//     subject: 'The Strapi Email plugin worked successfully',
-//     text: 'Hello world!',
-//     html: 'Hello world!',
-//   }),
-
-
-
-
 </script>
 
 <style>
+.formkit-messages:not(.formkit-wrapper .formkit-messages){
+    display: none;
+}
+.gdpr_text {
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 0;
+    padding-bottom: 1rem;
+}
+
+.gdpr_text a {
+    color: #ff8c00;
+    text-decoration: none;
+}
+
 .radio_flex {
     display: flex;
     flex-wrap: wrap;
@@ -193,5 +183,4 @@
 .formkit-outer[data-type="multi-step"]>.formkit-wrapper {
     min-width: 800px;
     max-width: 100%;
-}
-</style>
+}</style>

@@ -13,11 +13,18 @@
 </head>
 
 <body>
-	<!-- <?php $error = ['hi im an error'];?> -->
+	<!-- <?php $error = ['hi im an error']; ?> -->
+
 	<div id="app"></div>
-	
+
+
 	<input form="jobApplication" type="hidden" name="_token" id="csrf-token" value="{{ csrf_token() }}">
 	@vite('resources/js/app.js')
 </body>
+@if($errors->any())
+<script>
+var show_application_message = true;
+</script>
+@endif
 
 </html>

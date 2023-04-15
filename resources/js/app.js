@@ -7,14 +7,16 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
-import { faTwitter, faFacebook, faLinkedin, faXing } from '@fortawesome/free-brands-svg-icons'
+import { faTwitter, faFacebook, faLinkedin, faXing} from '@fortawesome/free-brands-svg-icons'
+import { faX } from '@fortawesome/free-solid-svg-icons'
+
 
 /* add icons to the library */
-library.add(faTwitter, faFacebook, faLinkedin, faXing )
+library.add(faTwitter, faFacebook, faLinkedin, faXing, faX )
 
 
 //form validation
-import name from './VueApp/custom-form-rules/name'
+import file from './VueApp/custom-form-rules/file'
 
 import './VueApp/assets/main.css'
 
@@ -26,11 +28,10 @@ import '@formkit/addons/css/multistep'
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
 
-
 app.use(router)
 app.use(formKitPlugin, defaultConfig({
     plugins: [createMultiStepPlugin()],
-    rules: { name }
+    rules: { file }
 }))
 ,
 app.mount('#app')

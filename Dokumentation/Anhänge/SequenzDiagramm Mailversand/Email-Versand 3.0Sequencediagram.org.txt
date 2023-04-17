@@ -1,0 +1,22 @@
+title Email-Versand
+actor Personalverantworliche
+actor Nutzer
+
+Nutzer->AppView:füllt Formular aus und klickt 'Senden'
+AppView->AppView:validiert Daten
+opt Daten nicht valide
+loop Daten valide
+AppView-->Nutzer: Fehler in entsprechenden Feldern Anzeigen
+Nutzer->AppView: passt Felder an und klickt 'Senden' 
+end
+end
+opt Daten valide
+AppView->Controller: sendet Daten 
+Controller->Controller: ließt Daten aus POST-Array  
+Controller->Model: übergibt Daten
+Model->MailView: fragt View an   
+MailView-->Model: gibt View zurück
+Model->Model: erzeugt E-Mail-Objekt 
+Model-->Controller:gibt E-Mail-Objekt zurück
+Controller->Personalverantworliche:versendet Email mit Bewerberdaten 
+end

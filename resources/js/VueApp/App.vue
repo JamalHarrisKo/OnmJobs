@@ -55,10 +55,10 @@
   </footer>
 </template>
 <style>
-
-body{
+body {
   color: #2a2c2c;
 }
+
 .nav_items {
   position: absolute;
   left: 50%;
@@ -232,8 +232,7 @@ export default {
             this.map.set(el.attributes.PageName, el.id);
           }
         })
-      }
-      )
+      })
   },
 }
 </script>

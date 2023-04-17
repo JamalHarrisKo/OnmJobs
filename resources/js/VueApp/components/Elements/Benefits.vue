@@ -3,7 +3,7 @@
     <div class="content-container">
         <div class="benefits">
             <h3 class="benefits__header">{{ Header }}</h3>
-            <ul class="ul">
+            <ul class="ul ul-benefits">
                 <li v-for="benefit in Benefits"> {{ benefit.ListItem }}</li>
             </ul>
         </div>
@@ -24,8 +24,9 @@
     line-height: 1.5;
     display: flex;
 }
-.ul li::before {
- content: '\25CF';
+.ul-benefits li::before {
+ content: '\002B';
+ font-weight: bold;
  color: #ff8c00;
  display: block;
  padding-right: 0.5rem;

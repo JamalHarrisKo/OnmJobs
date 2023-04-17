@@ -22,10 +22,12 @@
     max-width: 800px;
     margin: 0 auto;
     margin-bottom: 7rem;
+    margin-top: 7rem;
 }
 
 .sectionHeader__header {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    color: #ff8c00;
 }
 
 .sectionHeader__headerSub {

@@ -55,7 +55,8 @@
 
 .text_image__text__header {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    color: #ff8c00;
     max-width: 60%;
     margin-top: 0;
 }

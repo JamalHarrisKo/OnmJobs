@@ -11,9 +11,8 @@ import PageNotFound from '../views/PageNotFound.vue'
 // these are passed to `createRouter`
 const routes = [
   // dynamic segments start with a colon
-  // { path: '/:id', component: HomeView },
   { path: '/:pageName', component: HomeView },
-  { path: '/', component: HomeView, props: { HomePage: 1 } }, //TODO find better solution for homeroute
+  { path: '/', component: HomeView, props: { HomePage: 1 } },                         //TODO find better solution for homeroute
   {
     path: '/404', component: PageNotFound
   },

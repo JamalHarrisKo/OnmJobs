@@ -223,9 +223,9 @@ export default {
       ),
       axios.get(this.dataSrcURL).then((response) => {
         this.navbarItems = response.data.data
-        // var map = new Map();
+        // var map = new Map() in data return object
         this.navbarItems.forEach((el) => {
-          // this.pages[el.id] = el.attributes.PageName
+          // this.pages[el.id] = el.attributes.PageName or URL slug if it is set
           if (el.attributes.URLSlug != null && el.attributes.URLSlug != "Default") {
             this.map.set(el.attributes.URLSlug, el.id);
           } else {

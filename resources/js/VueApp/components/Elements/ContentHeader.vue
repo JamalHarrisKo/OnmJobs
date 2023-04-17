@@ -11,9 +11,7 @@
     margin-bottom: 3rem;
 }
 </style>
-
 <script>
-
 export default {
     name: 'ContentHeader',
     props: ['textAlignCenter'],

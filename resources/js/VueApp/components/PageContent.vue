@@ -48,7 +48,6 @@ import Benefits from './Elements/Benefits.vue'
                 <ContentHeader :textAlignCenter="content.alignCenter">
                     <template #ContentHeader>{{ content['ContentHeader'] }}</template>
                 </ContentHeader>
-
             </div>
             <div v-if="content['__component'] == 'gallery.logo-gallery'">
                 <LogoGallery :negativeMarginTop="content.reduceSpaceTop" :logos="content['Logos']['data']"></LogoGallery>

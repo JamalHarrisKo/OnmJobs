@@ -1,0 +1,10 @@
+        <div class="pageContent__single" v-for="content in ContentArray" v-if=(ContentArray)>
+            <div v-if="content['__component'] == 'heros.hero'">
+                <HeaderHero :background-image="content['backgroundImage']['data']['attributes']['formats']['large']['url']">
+                    <template #Header>{{ content['Header'] }}</template>
+                    <template #HeaderSub>{{ content['HeaderSub'] }}</template>
+                    <template #Text>{{ content['Text'] }}</template>
+                </HeaderHero>
+            </div>
+	    ... //weiter Komponenten
+        </div>

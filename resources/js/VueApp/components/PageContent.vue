@@ -153,19 +153,11 @@ export default {
 
     mounted() {
         axios.get(this.dataSrcURL).then((response) => {
-
             this.pageObject = response.data.data.attributes.PageContent
             this.pageObject.forEach(el =>
                 this.loadContent(el)
             )
-            if (response.data.data.attributes.job_ad.data) {
-                this.jobObject = response.data.data.attributes.job_ad.data.attributes.Content
-                this.jobObject.forEach(el =>
-                    this.loadContent(el)
-                )
-            }
-        }
-        )
+        })
     },
     methods: {
         //get all contents from page object

@@ -15,7 +15,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .sectionHeader {
     text-align: center;
     margin-bottom: 5rem;
@@ -24,7 +24,6 @@
     margin-bottom: 7rem;
     margin-top: 7rem;
 }
-
 .sectionHeader__header {
     font-size: 2.5rem;
     color: #ff8c00;
@@ -34,3 +33,9 @@
     font-size: 1.5rem;
 }
 </style>
+<script>
+export default {
+    name: 'SectionHeader',
+    props:['']
+}
+</script>

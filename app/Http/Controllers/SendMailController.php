@@ -14,24 +14,6 @@ class SendMailController extends Controller
 {
     public function sendmail(Request $request)
     {
-        // var_dump($request->file);exit;
-        // $name = $_POST['name'];
-        // $content = $_POST['text'];
-
-        // $file = $request->file;
-        // $request->validate([
-        //     'name' => 'required',
-        //     'text' => 'required',
-        //     'file' => 'required'
-        // ]);
-        // send the email
-        // dd($request->request);
-
-
-
-        // $validated = $request->validated();
-
-            // dd($request);
         //set in conf
         $to_email = "i@onm.de";
         Mail::to($to_email)->send(new ApplicationMail(

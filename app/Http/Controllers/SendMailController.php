@@ -15,7 +15,7 @@ class SendMailController extends Controller
     public function sendmail(Request $request)
     {
         //set in conf
-        $to_email = "i@onm.de";
+        $to_email = env('MAIL_TO');
         Mail::to($to_email)->send(new ApplicationMail(
             $request->input('firstname'),
             $request->input('lastname'),

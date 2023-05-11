@@ -93,7 +93,7 @@
 
 .flipcards__single:nth-child(2n) .flipcards__single__back {
     background-color: #f6f6f6;
-    color: black;
+    color: #2a2c2c;
 }
 </style>
 <script>

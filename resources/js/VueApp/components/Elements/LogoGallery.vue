@@ -19,14 +19,14 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 7rem;
+    margin-bottom: 5rem;
 }
 
 .logo_gallery__single {
     width: 200px;
     display: flex;
     justify-content: center;
-    margin: 0 2rem;
+    margin:2rem;
 }
 
 .logo_gallery__single img {

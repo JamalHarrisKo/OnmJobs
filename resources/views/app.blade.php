@@ -13,7 +13,21 @@
 </head>
 
 <body>
-	<!-- <?php $error = ['hi im an error']; ?> -->
+	@if ($errors->any())
+	<div class="errorModal" style="display:none">
+		<div class="errorModal__window">
+			<span class="errorModal__window__closer">
+				X
+			</span>
+			<p class="errorMoal__window__header">Leider sind foglende Probleme aufgetreten: </p>
+			<ul>
+				@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	</div>
+	@endif
 
 	<div id="app"></div>
 
@@ -22,7 +36,15 @@
 </body>
 @if($errors->any())
 <script>
-var show_application_message = true;
+	/* move this to a different file, maybe */
+	errorModalCloser = document.querySelector('.errorModal__window__closer');
+	errorModal = document.querySelector('.errorModal');
+	errorModalCloser.onclick = function() {
+		errorModal.classList.add('errorModal__closed')
+	}
+	errorModal.onclick = function() {
+		errorModal.classList.add('errorModal__closed')
+	}
 </script>
 @endif
 

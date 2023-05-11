@@ -32,6 +32,7 @@
     flex-direction: row;
     justify-content: center;
     transition: ease 0.2s;
+    background-color: #FFFFFF;
 }
 
 .job_offer_list__single:hover .job_offer_list__single__button {
@@ -51,13 +52,13 @@
 .job_offer_list__single__title {
     font-weight: bold;
     padding: 1rem;
-    color: black;
+    color: #2a2c2c;
     transition: ease 0.2s;
 }
 
 .job_offer_list__single__date {
     padding: 1rem;
-    color: black;
+    color: #2a2c2c;
 }
 
 .job_offer_list__single__entry,

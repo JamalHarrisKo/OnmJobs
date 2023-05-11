@@ -8,11 +8,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import { faTwitter, faFacebook, faLinkedin, faXing} from '@fortawesome/free-brands-svg-icons'
-import { faX } from '@fortawesome/free-solid-svg-icons'
+import { faX, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 
 /* add icons to the library */
-library.add(faTwitter, faFacebook, faLinkedin, faXing, faX )
+library.add(faTwitter, faFacebook, faLinkedin, faXing, faX, faBars, faXmark )
 
 
 //form validation

@@ -65,6 +65,7 @@ export default {
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin-bottom: 7rem;
+    padding: 2rem;
 
 
 }
@@ -82,4 +83,23 @@ export default {
 .hero_header__sub {
     font-size: 2rem;
     margin-bottom: 1rem;
-}</style>
+}
+
+.hero_header__text {
+    padding: 0 10%;
+    font-size:1.2rem
+}
+
+@media(max-width:992px) {
+    .hero_header__text {
+        padding: 0 1.5rem;
+    }
+}
+
+@media(max-width:576px) {
+    .hero_header__text {
+        padding: 0;
+
+    }
+}
+</style>

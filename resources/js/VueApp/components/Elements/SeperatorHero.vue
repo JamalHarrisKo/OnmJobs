@@ -2,11 +2,10 @@
     <div class="Sperator_Hero">
         <div class="hero_seperator__overlay">
         </div>
-        <div class="hero_seperator"
-            v-bind:style="{ backgroundImage: 'url(http://localhost:1337' + imageSrc + ')' }">
+        <div class="hero_seperator" v-bind:style="{ backgroundImage: 'url(http://localhost:1337' + imageSrc + ')' }">
             <div class="content-container">
                 <div class="hero_seperator__content" v-bind:class="{ textAlignCenter: textAlignCenter }">
-                    <h1 v-if="headerMain" class="hero_seperator__main">{{headerMain}}
+                    <h1 v-if="headerMain" class="hero_seperator__main">{{ headerMain }}
                     </h1>
                     <h3 v-if="headerSub" class="hero_seperator__sub">{{ headerSub }}</h3>
                     <div v-if="text" class="hero_seperator__text"> {{ text }}</div>
@@ -26,6 +25,10 @@
     margin-bottom: 7rem;
 }
 
+.hero_seperator__main {
+    margin-top: 0;
+}
+
 .hero_seperator__overlay {
     position: absolute;
     top: 0;
@@ -38,17 +41,12 @@
 
 .hero_seperator {
     background-size: cover;
-    height: 600px;
-    max-height: 100vh;
+    min-height: 400px;
     display: flex;
     align-items: center;
-    ;
-    /* background-position: center; */
     background-repeat: no-repeat;
     background-attachment: fixed;
-
-    /* justify-content: center;
-        align-items: center; */
+    padding: 4rem 2rem;
 }
 
 .hero_seperator__content {
@@ -62,19 +60,49 @@
     font-size: 3.5rem;
 }
 
+@media(max-width:576px) {
+    .hero_seperator__main {
+        font-size: 2.7rem;
+    }
+}
+
 .hero_seperator__sub {
     font-size: 2rem;
 }
 
+@media(max-width:576px) {
+    .hero_seperator__sub {
+        font-size: 1.7rem;
+    }
+}
+
 .hero_seperator__text {
-    font-size: 1.2rem;
-    max-width: 50%;
-}</style>
+    font-size: 1.1rem;
+    width: 50%;
+    line-height: 1.5;
+}
+
+@media(max-width:576px) {
+    .hero_seperator__sub {
+        font-size: 1.7rem;
+    }
+
+    .hero_seperator__text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero_seperator__text {
+        width: 100%;
+    }
+}
+</style>
 
 <script>
 export default {
-    name:'SeperatorHero',
-    props:['imageSrc', 'textAlignCenter', 'headerMain', 'headerSub', 'text']
+    name: 'SeperatorHero',
+    props: ['imageSrc', 'textAlignCenter', 'headerMain', 'headerSub', 'text']
 }
 
 </script>

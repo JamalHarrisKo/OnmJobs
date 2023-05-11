@@ -10,11 +10,22 @@
     width: fit-content;
     text-decoration: none;
     padding: 1rem 2rem;
-    border: 2px solid black;
-    color: black;
+    border: 2px solid #ff8c00;
+    color: #ff8c00;
     border-radius: 5px;
     margin-bottom: 7rem;
+    transition: ease 0.2s;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #ffffff;
 
+}
+
+.onm-button:hover{
+    color: #ffffff;
+    background-color: #ff8c00 ;
+
+    transform: scale(1.05);
 }
 </style>
 <script>

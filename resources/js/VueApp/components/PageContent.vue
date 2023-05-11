@@ -19,12 +19,6 @@ import OfferAndNeed from './Elements/OfferAndNeed.vue'
 import Video from './Elements/Video.vue'
 import ShortProfile from './Elements/ShortProfile.vue'
 import Benefits from './Elements/Benefits.vue'
-
-
-
-
-
-
 // import TextImage from './TextImage.vue'
 </script>
 <template>
@@ -85,7 +79,8 @@ import Benefits from './Elements/Benefits.vue'
                 </Text>
             </div>
             <div v-if="content['__component'] == 'text.big-text'">
-                <BigText :orange="content.orangeText" :textAlignCenter="content.textAlignCenter" :reduceSpaceTop="content.reduceSpaceTop">
+                <BigText :orange="content.orangeText" :textAlignCenter="content.textAlignCenter"
+                    :reduceSpaceTop="content.reduceSpaceTop">
                     <template #Text>{{ content['Text'] }}</template>
                 </BigText>
             </div>
@@ -97,10 +92,9 @@ import Benefits from './Elements/Benefits.vue'
                 <JobImageList :jobOffers="content['JobOfferCard']">
                 </JobImageList>
             </div>
-
-            <div v-if="content['__component'] == 'formulare.formular' && content['Formular'] == 'PHP Entwickler (FE)'">
+            <div v-if="content['__component'] == 'formulare.formular'">
                 <div class="content-container">
-                    <Form></Form>
+                    <Form :Formname="content['Formular']"></Form>
                 </div>
             </div>
             <div v-if="content['__component'] == 'text.offer-and-need'">
@@ -110,16 +104,14 @@ import Benefits from './Elements/Benefits.vue'
                     :wantedImageSrc="content.WantedImage.data.attributes.formats.medium.url"></OfferAndNeed>
             </div>
             <div v-if="content['__component'] == 'media.video'">
-              
                 <Video :videoSource="content.Video.data.attributes.url" :reduceSpaceTop="content.reduceSpaceTop"></Video>
             </div>
             <div v-if="content['__component'] == 'text.short-profile'">
                 <ShortProfile :Header="content.Header" :Text="content.Text"></ShortProfile>
             </div>
-            <div v-if="content['__component'] == 'text.further-benefits'">              
+            <div v-if="content['__component'] == 'text.further-benefits'">
                 <Benefits :Header="content.Header" :Benefits="content.Benefits"></Benefits>
             </div>
-           
         </div>
     </div>
 </template>
@@ -152,7 +144,11 @@ export default {
     },
 
     mounted() {
-        axios.get(this.dataSrcURL).then((response) => {
+        axios.get(this.dataSrcURL, {
+            headers: {
+                'Authorization': 'bearer ' + import.meta.env.VITE_STRAPI_ACCESS_TOKEN
+            }
+        }).then((response) => {
 
             this.pageObject = response.data.data.attributes.PageContent
             this.pageObject.forEach(el =>

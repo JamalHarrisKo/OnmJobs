@@ -52,6 +52,7 @@
     height: 100%;
     display: block;
     padding: 2rem;
+    box-sizing: border-box;
 
 }
 
@@ -89,8 +90,20 @@
 
 .job_offer_images a {
     text-decoration: none;
-    color: black;
+    color: #2a2c2c;
 
+}
+
+@media(max-width:576px) {
+    .job_offer_images__single {
+        background-size: cover;
+        margin: 1rem;
+        transition: ease 0.2s;
+        max-width: 100%;
+        min-width: 00px;
+        height: 300px;
+        flex-grow: 1;
+    }
 }
 </style>
 

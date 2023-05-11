@@ -145,7 +145,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    background-color: black;
+    background-color: #2a2c2c;
     display: block;
 }
 

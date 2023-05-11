@@ -22,6 +22,7 @@
     line-height: 1.5;
     display: flex;
 }
+
 .ul li::before {
  content: '\25CF';
  color: #ff8c00;

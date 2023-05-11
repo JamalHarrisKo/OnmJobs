@@ -41,7 +41,11 @@ export default {
 
     }
     //get page id from name for pretty url
-    axios.get(this.pageSrcURL).then((response) => {
+    axios.get(this.pageSrcURL, {
+            headers: {
+              'Authorization': 'bearer ' + import.meta.env.VITE_STRAPI_ACCESS_TOKEN
+            }
+        }).then((response) => {
       response.data.data.forEach((el) => {
         // fix reloading pages with URLSlugs
         if (el.attributes.PageName == this.$route.params.pageName || el.attributes.URLSlug == this.$route.params.pageName) {

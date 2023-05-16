@@ -5,9 +5,15 @@
  */
 
 
- var file = function (node) {
-   var update = (node.value) //updates node value when different file is entered
-  return (node['_value'][0]['name'].split('.').pop().toLowerCase()=='pdf')
+var file = function (node) {
+  var update = (node.value) //updates node value when different file is entered
+  console.log(node['_value'].length)
+  for (var i = 0; i < node['_value'].length; i++) {
+    if (node['_value'][i]['name'].split('.').pop().toLowerCase() !== 'pdf') {
+      return false
+    }
   }
-  file.force = true
-  export default file
+  return true
+}
+file.force = true
+export default file

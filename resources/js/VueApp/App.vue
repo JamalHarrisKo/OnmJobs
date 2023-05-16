@@ -77,7 +77,11 @@
 <style>
 body {
   color: #2a2c2c;
-  background-color: #FAF9F6;
+  background-color: #FFFFFF;
+}
+
+main{
+  min-height: calc(100vh - 224px - 5rem);
 }
 
 .nav_items {
@@ -144,9 +148,7 @@ div {
 }
 
 .footer_social__single :hover {
-
   transition: ease 0.2s;
-
 }
 
 .footer_social__single :hover {
@@ -162,8 +164,8 @@ div {
 }
 
 .footer {
-  background-color: gray;
-
+  background-color: #2a2c2c;
+  height: 224px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -260,7 +262,7 @@ body {
 .mainNavigation {
   background-color: #FAF9F6;
   position: fixed;
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid #ff8c00;
   padding: 1rem 0;
   top: 0;
   left: 0;
@@ -281,8 +283,8 @@ body {
 }
 
 .mobile_nav_items__single {
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-top: 1px solid #2a2c2c;
+  border-bottom: 1px solid #2a2c2c;
   width: 100%;
   display: flex;
 }

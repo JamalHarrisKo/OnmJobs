@@ -34,7 +34,13 @@ class ApplicationMail extends Mailable
     private $wordpress;
     private $typo3;
 
-    private $files;
+    private $file;
+    //additional files
+    private $file2;
+    private $file3;
+    private $file4;
+    private $file5;
+
     private $bonusText;
     private $jobapplication;
 
@@ -81,7 +87,12 @@ class ApplicationMail extends Mailable
         $frontendFrameworks,
         $wordpress,
         $typo3,
-        $files,
+        $file,
+        //additional files
+        $file2,
+        $file3,
+        $file4,
+        $file5,
         $bonusText,
         $jobapplication,
         //php addiions
@@ -118,7 +129,13 @@ class ApplicationMail extends Mailable
         $this->frontendFrameworks = $frontendFrameworks;
         $this->wordpress = $wordpress;
         $this->typo3 = $typo3;
-        $this->files = $files;
+        $this->file = $file;
+        //additional files
+        $this->file2 = $file2;
+        $this->file3 = $file3;
+        $this->file4 = $file4;
+        $this->file5 = $file5;
+
         $this->bonusText = $bonusText;
         $this->jobapplication = $jobapplication;
         //php additions
@@ -138,7 +155,7 @@ class ApplicationMail extends Mailable
         $this->extensionDevelopment = $extensionDevelopment;
         $this->typo3management = $typo3management;
         //c# dev
-        $this->cSharp =$cSharp;
+        $this->cSharp = $cSharp;
         $this->dotnet = $dotnet;
         //desinger azubi
         $this->pixelbased_imagemanipulation = $pixelbased_imagemanipulation;
@@ -209,12 +226,35 @@ class ApplicationMail extends Mailable
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments()
-    {   
+    {
+        $files = [];
+        if ($this->file) {
+            array_push($files, $this->file);
+        }
+        if ($this->file2) {
+            array_push($files, $this->file2);
+        }
+        if ($this->file3) {
+            array_push($files, $this->file3);
+        }
+        if ($this->file4) {
+            array_push($files, $this->file4);
+        }
+        if ($this->file5) {
+            array_push($files, $this->file5);
+        }
+        
         $attachments = [];
-        foreach($this->files as $file){
-            $attachments[] = Attachment::fromPath($file->path())
-            ->as($file->getClientOriginalName())
-            ->withMime($file->getClientMimeType());
+        foreach ($files as $file) {
+            // $attachments[] = Attachment::fromPath($file->path())
+            // ->as($file->getClientOriginalName())
+            // ->withMime($file->getClientMimeType());
+            array_push(
+                $attachments,
+                Attachment::fromPath($file->path())
+                    ->as($file->getClientOriginalName())
+                    ->withMime($file->getClientMimeType())
+            );
         }
         return $attachments;
     }

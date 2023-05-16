@@ -15,15 +15,16 @@ class SendMailController extends Controller
     public function sendmail(SendMailRequest $request)
     {
         //care: NEED some sort of validation in order to be passed
+        // dd($request);
         $rules = []; 
         if ($request->has('jobapplication')) {
             $rules = array_merge($rules, ['jobapplication' => 'required']);
         };
         if ($request->has('phone')) {
-            $rules = array_merge($rules, ['phone' => 'required']);
+            $rules = array_merge($rules, ['phone' => 'required|regex:/^[0-9\s]*$/']);
         };
         if ($request->has('email')) {
-            $rules = array_merge($rules, ['email' => 'required']);
+            $rules = array_merge($rules, ['email' => 'required|email']);
         };
         if ($request->has('lastname')) {
             $rules = array_merge($rules, ['lastname' => 'required']);
@@ -31,8 +32,21 @@ class SendMailController extends Controller
         if ($request->has('firstname')) {
             $rules = array_merge($rules, ['firstname' => 'required']);
         };
-        if ($request->has('files')) {
-            $rules = array_merge($rules, ['files' => 'required']);
+        if ($request->has('file')) {
+            $rules = array_merge($rules, ['file' => 'required|file|mimes:pdf']);
+        };
+        //additional files
+        if ($request->has('file2')) {
+            $rules = array_merge($rules, ['file2' => 'file|mimes:pdf']);
+        };
+        if ($request->has('file3')) {
+            $rules = array_merge($rules, ['file3' => 'file|mimes:pdf']);
+        };
+        if ($request->has('file4')) {
+            $rules = array_merge($rules, ['file4' => 'file|mimes:pdf']);
+        };
+        if ($request->has('file5')) {
+            $rules = array_merge($rules, ['file5' => 'file|mimes:pdf']);
         };
         if ($request->has('html_css')) {
             $rules = array_merge($rules, ['html_css' => 'required']);
@@ -60,7 +74,7 @@ class SendMailController extends Controller
             $rules = array_merge($rules, ['typo3' => 'required']);
         };
         if ($request->has('salary')) {
-            $rules = array_merge($rules, ['salary' => 'required']);
+            $rules = array_merge($rules, ['salary' => 'required|regex:/^[0-9\s]*$/']);
         };
         if ($request->has('availabilityDate')) {
             $rules = array_merge($rules, ['availabilityDate' => 'required']);
@@ -128,6 +142,12 @@ class SendMailController extends Controller
                 'typo3.required' => '"Typo3" ist ein Pflichfeld',
                 'file.required' => 'Bitte Dokumente zum Upload bereitstellen',
                 'file.mimes' => 'Bitte Dokumente im PDF Format zum Upload bereitstellen',
+                //additional files
+                'file2.mimes' => 'Bitte Dokumente im PDF Format zum Upload bereitstellen',
+                'file3.mimes' => 'Bitte Dokumente im PDF Format zum Upload bereitstellen',
+                'file4.mimes' => 'Bitte Dokumente im PDF Format zum Upload bereitstellen',
+                'file5.mimes' => 'Bitte Dokumente im PDF Format zum Upload bereitstellen'
+
             ]
         );
 
@@ -149,7 +169,13 @@ class SendMailController extends Controller
             (isset($validatedData['frontendFrameworks'])) ? $validatedData['frontendFrameworks'] : '',
             (isset($validatedData['wordpress'])) ? $validatedData['wordpress'] : '',
             (isset($validatedData['typo3'])) ? $validatedData['typo3'] : '',
-            (isset($validatedData['files'])) ? $validatedData['files'] : '',
+            (isset($validatedData['file'])) ? $validatedData['file'] : '',
+            //additional files
+            (isset($validatedData['file2'])) ? $validatedData['file2'] : '',
+            (isset($validatedData['file3'])) ? $validatedData['file3'] : '',
+            (isset($validatedData['file4'])) ? $validatedData['file4'] : '',
+            (isset($validatedData['file5'])) ? $validatedData['file5'] : '',
+
             (isset($validatedData['bonusText'])) ? $validatedData['bonusText'] : '',
             (isset($validatedData['jobapplication'])) ? $validatedData['jobapplication'] : '',
 

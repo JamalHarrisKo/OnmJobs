@@ -11,6 +11,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@braid/vue-formulate": "^2.5.3",
         "@formkit/addons": "^0.16.4",
         "@formkit/themes": "^0.16.4",
         "@formkit/vue": "^0.16.4",
@@ -22,6 +23,7 @@
         "@vitejs/plugin-vue": "^4.1.0",
         "@vue/cli-plugin-unit-jest": "^5.0.8",
         "@vue/test-utils": "^2.0.0-rc.18",
+        "dropzone": "^6.0.0-beta.2",
         "happy-dom": "^9.8.4",
         "strapi-plugin-populate-deep": "^2.0.0",
         "vitest": "^0.30.1",

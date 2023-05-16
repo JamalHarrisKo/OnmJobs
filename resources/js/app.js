@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 import App from './VueApp/App.vue'
 import router from './VueApp/router'
+import VueFormulate from '@braid/vue-formulate'
+
+
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -28,6 +31,7 @@ import '@formkit/addons/css/multistep'
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
 
+// app.use(VueFormulate)
 app.use(router)
 app.use(formKitPlugin, defaultConfig({
     plugins: [createMultiStepPlugin()],

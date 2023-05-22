@@ -6,10 +6,7 @@
     </div>
 </template>
 <style>
-.content_header {
-    font-size: 2rem;
-    margin-bottom: 3rem;
-}
+
 </style>
 <script>
 export default {

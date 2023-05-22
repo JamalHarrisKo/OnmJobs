@@ -20,6 +20,7 @@ import Video from './Elements/Video.vue'
 import ShortProfile from './Elements/ShortProfile.vue'
 import Benefits from './Elements/Benefits.vue'
 // import TextImage from './TextImage.vue'
+
 </script>
 <template>
     <div class="pageContent">
@@ -44,7 +45,7 @@ import Benefits from './Elements/Benefits.vue'
                 </ContentHeader>
             </div>
             <div v-if="content['__component'] == 'gallery.logo-gallery'">
-                <LogoGallery :negativeMarginTop="content.reduceSpaceTop" :logos="content['Logos']['data']"></LogoGallery>
+                <LogoGallery :negativeMarginTop="content.reduceSpaceTop" :logoLinks="content.LogoItem"></LogoGallery>
             </div>
             <div v-if="content['__component'] == 'links.button'">
                 <Button :href="content['URL']" :alignCenter="content['center']"
@@ -149,7 +150,9 @@ export default {
                 'Authorization': 'bearer ' + import.meta.env.VITE_STRAPI_ACCESS_TOKEN
             }
         }).then((response) => {
+            console.log('404 response')
 
+console.log(response.data.data)
             this.pageObject = response.data.data.attributes.PageContent
             this.pageObject.forEach(el =>
                 this.loadContent(el)
@@ -173,16 +176,5 @@ export default {
 
 </script>
 <style>
-.negativeMarginTop {
-    margin-top: -4rem !important;
-}
 
-.alignCenter {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.textAlignCenter {
-    text-align: center;
-}
 </style>

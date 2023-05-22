@@ -16,33 +16,7 @@
 </template>
 
 <style scoped>
-.sectionHeader {
-    text-align: center;
-    margin-bottom: 5rem;
-    max-width: 800px;
-    margin: 0 auto;
-    margin-bottom: 7rem;
-    margin-top: 7rem;
-}
 
-.sectionHeader__header {
-    font-size: 2.5rem;
-    color: #ff8c00;
-}
-
-.sectionHeader__headerSub {
-    font-size: 1.5rem;
-}
-
-@media(max-width:576px) {
-    .sectionHeader__header {
-        font-size: 2rem;
-       
-    }
-    .sectionHeader__headerSub {
-    font-size: 1.3rem;
-}
-}
 </style>
 <script>
 export default {

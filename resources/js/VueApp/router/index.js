@@ -17,12 +17,13 @@ const routes = [
     path: '/404', component: PageNotFound
   },
   {
-    path: '/:pathMatch(.*)*', component: PageNotFound
+    path: '/:pathMatch(.*)*', component: PageNotFound, redirect:'/404'
   }
 ]
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: routes
+  routes: routes,
+  
 })
 
 export default router

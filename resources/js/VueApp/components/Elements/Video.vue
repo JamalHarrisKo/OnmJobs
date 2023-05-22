@@ -6,11 +6,7 @@
     </div>
 </template>
 <style>
-.contentVideo{
-    width: 100%;
-    border-radius: 30px;
-    margin-bottom: 7rem;
-}
+
 </style>
 <script>
 export default {

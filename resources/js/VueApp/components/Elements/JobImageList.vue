@@ -12,9 +12,8 @@
                             <p class="job_offer_images__single__sticker__title">{{
                                 joboffer['job_ad']['data']['attributes']['Title'] }}</p>
                             <p class="job_offer_images__single__sticker__date">{{
-                                joboffer['job_ad']['data']['attributes']['Date'] }}</p>
+                                formatDate(joboffer['job_ad']['data']['attributes']['Date'] )}}</p>
                         </div>
-
                     </RouterLink>
                     <RouterLink
                         :to="{ path: '/' + joboffer['job_ad']['data']['attributes']['page']['data']['attributes']['URLSlug'] }"
@@ -23,7 +22,7 @@
                             <p class="job_offer_images__single__sticker__title">{{
                                 joboffer['job_ad']['data']['attributes']['Title'] }}</p>
                             <p class="job_offer_images__single__sticker__date">{{
-                                joboffer['job_ad']['data']['attributes']['Date'] }}</p>
+                                formatDate(joboffer['job_ad']['data']['attributes']['Date'] )}}</p>
                         </div>
                     </RouterLink>
                 </div>
@@ -32,8 +31,8 @@
                         <div class="job_offer_images__single__sticker">
                             <p class="job_offer_images__single__sticker__title">{{
                                 joboffer['job_ad']['data']['attributes']['Title'] }}</p>
-                            <p class="job_offer_images__single__sticker__date">{{
-                                joboffer['job_ad']['data']['attributes']['Date'] }}</p>
+                            <p class="job_offer_images__single__sticker__date">
+                                {{ formatDate(joboffer['job_ad']['data']['attributes']['Date'] )}}</p>
                         </div>
                     </a>
                 </div>
@@ -42,75 +41,18 @@
     </div>
 </template>
 <style>
-.job_offer_images__single__container {
-    width: 100%;
-    height: 100%;
-}
 
-.job_offer_images__single__container a {
-    width: 100%;
-    height: 100%;
-    display: block;
-    padding: 2rem;
-    box-sizing: border-box;
-
-}
-
-.job_offer_images {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 6rem;
-}
-
-.job_offer_images__single {
-    background-size: cover;
-
-    margin: 1rem;
-    transition: ease 0.2s;
-    max-width: 100%;
-    min-width: 400px;
-    height: 300px;
-    flex-grow: 1;
-}
-
-.job_offer_images__single:hover {
-    transform: scale(1.05);
-}
-
-.job_offer_images__single__sticker {
-    background-color: white;
-    width: fit-content;
-    padding: 1rem;
-    max-width: 330px;
-}
-
-.job_offer_images__single__sticker__title {
-    font-weight: bold;
-}
-
-.job_offer_images a {
-    text-decoration: none;
-    color: #2a2c2c;
-
-}
-
-@media(max-width:576px) {
-    .job_offer_images__single {
-        background-size: cover;
-        margin: 1rem;
-        transition: ease 0.2s;
-        max-width: 100%;
-        min-width: 00px;
-        height: 300px;
-        flex-grow: 1;
-    }
-}
 </style>
 
 <script>
 export default {
     name: 'jobImages',
-    props: ['jobOffers']
+    props: ['jobOffers'],
+    methods: {
+        formatDate(date, locale = 'de-DE', options = {day:'2-digit', month:'long', year:'numeric'}){
+            return new Date(date).toLocaleDateString(locale, options)
+        }
+    }
 }
 
 </script>

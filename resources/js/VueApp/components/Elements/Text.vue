@@ -7,7 +7,5 @@
     </div>
 </template>
 <style>
-.text{
-    margin-bottom: 7rem;
-}
+
 </style>

@@ -1,0 +1,72 @@
+.errorModal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .errorModal.errorModal__closed {
+    display: none !important;
+  }
+  
+  .errorModal__window {
+    min-width: 300px;
+    min-height: 100px;
+    max-width: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+    background-color: white;
+    position: relative;
+    padding: 2rem;
+  }
+  
+  .errorModal__window::-webkit-scrollbar {
+    width: 7px;
+    background-color: #f6f6f6;
+  }
+  
+  .errorModal__window::-webkit-scrollbar-thumb {
+    background: #ff8c00;
+    border-radius: 5px;
+  }
+  
+  .errorModal__window ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .errorModal__window ul li {
+    margin-bottom: 1rem;
+    display: flex;
+    line-height: 1.5;
+  
+  }
+  
+  .errorModal__window ul li::before {
+    content: '\25CF';
+    color: #ff8c00;
+    display: block;
+    padding-right: 0.5rem;
+  }
+  
+  .errorModal__window__closer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .errorModal__window__closer:hover {
+    color: #ff8c00;
+    cursor: pointer;
+  }
+  
+  .errorMoal__window__header {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }

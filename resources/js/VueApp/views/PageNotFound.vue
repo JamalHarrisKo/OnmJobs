@@ -23,9 +23,5 @@ export default {
 }
 </script>
 <style>
-.fourOFour{
-    padding: 2rem;
-    text-align: center;
-    min-height: 300px;
-}
+
 </style>

@@ -1,0 +1,182 @@
+.d-none {
+    display: none;
+}
+
+.testclass~.formkit_placeholder {
+    display: none;
+}
+
+.formkit_placeholder {
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.formkit_files {}
+
+.form_explanation_text {
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 0;
+    padding-bottom: 3rem;
+}
+
+.file_input_wrapper:has(.formkit-no-files) {
+    display: none;
+    /* Important? */
+}
+
+#file {
+    display: block !important;
+}
+
+.addFileButton {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    padding: 0.7rem 1.8rem;
+    border: 2px solid #ff8c00;
+    color: #ff8c00;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    transition: ease 0.2s;
+    font-size: 0.875em;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.addFileButton:hover {
+    color: #ffffff;
+    background-color: #ff8c00;
+
+    transform: scale(1.05);
+}
+
+.file--invisible {
+    display: none;
+}
+
+.formkit-steps {
+    /* background-color: #FFFFFF; */
+}
+
+.formkit-steps .formkit-inner {
+    background-color: #FAF9F6;
+}
+
+.formkit-steps textarea {
+    /* background-color: #FAF9F6; */
+}
+
+.formkit-messages:not(.formkit-wrapper .formkit-messages) {
+    display: none;
+}
+
+.gdpr_text {
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 0;
+    padding-bottom: 1rem;
+}
+
+.gdpr_text a {
+    color: #ff8c00;
+    text-decoration: none;
+}
+
+.radio_flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.radio_flex .formkit-outer {
+    min-width: 300px;
+    margin: 1rem;
+    flex-grow: 1;
+}
+
+/* radio buttons */
+[data-type="checkbox"] .formkit-input:checked~.formkit-decorator .formkit-icon,
+[data-type="radio"] .formkit-input:checked~.formkit-decorator .formkit-icon {
+    color: #ff8c00 !important;
+}
+
+[data-type="checkbox"] .formkit-input:checked~.formkit-decorator,
+[data-type="radio"] .formkit-input:checked~.formkit-decorator {
+    box-shadow: 0 0 0 1px #ff8c00 !important;
+}
+
+.submit_wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+:root {
+    --multistep-color-success: #ff8c00 !important;
+}
+
+[data-type="button"] .formkit-input {
+    background-color: white !important;
+    border: 2px solid #ff8c00 !important;
+    color: #ff8c00 !important;
+    transition: ease 0.2s;
+}
+
+[data-type="button"] .formkit-input:hover {
+    background-color: #ff8c00 !important;
+    color: white !important;
+    transition: ease 0.2s;
+
+}
+
+[data-type="submit"] .formkit-input {
+    background-color: #ff8c00 !important;
+    font-size: 1.1rem !important;
+    /* text-transform: uppercase; */
+}
+
+.formContainer {
+    margin-bottom: 5rem;
+}
+
+.formkit-wrapper {
+    margin: 0 auto;
+    /* margin-bottom: 5rem; */
+}
+
+.formkit-outer[data-type="multi-step"]>[data-tab-style="progress"]>.formkit-tabs .formkit-tab-label {
+    white-space: break-spaces !important;
+}
+
+.formkit-outer[data-type="multi-step"]>.formkit-wrapper {
+    max-width: 800px;
+    min-width: 60%;
+}
+
+.formkit_tab_title {
+    display: none;
+}
+
+@media(max-width:1400px) {
+    .formkit_tab_title {
+        /* display: block; */
+    }
+
+    .formkit-outer[data-type="multi-step"]>.formkit-wrapper>.formkit-tabs .formkit-tab[data-active="false"] span {
+        display: none;
+    }
+
+    .formkit-outer[data-type="multi-step"]>.formkit-wrapper>.formkit-tabs .formkit-tab[data-active="true"] span {
+        width: fit-content;
+    }
+}
+
+@media(max-width: 576px) {
+    .formkit-tabs {
+        margin-bottom: 3rem !important;
+    }
+}

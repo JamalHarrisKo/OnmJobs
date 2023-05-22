@@ -4,13 +4,7 @@
     </div>
 </template>
 <style>
-.big_text{
-    font-size: 2.5rem;
-    margin-bottom: 7rem;
-}
-.orange{
-    color: #ff8c00;
-}
+
 </style>
 <script>
 export default{

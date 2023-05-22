@@ -208,7 +208,7 @@ class SendMailController extends Controller
 
         ));
 
-        // return redirect('/')->withErrors(['msg' => 'Danke für deine Bewerbung bei ONM, wir werden deine Unterlagen prüfen und uns in kürze Zurückmelden']);
+        return redirect('/')->with('success', 'Vielen Dank für deine Bewerbung bei ONM! <br> wir werden in deine Unterlagen durchgehen, und uns in kürze bei dir melden.');;
 
         return redirect('/');
         // return redirect('/')->withErrors(['msg' => 'The Message']);

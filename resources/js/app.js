@@ -21,7 +21,7 @@ library.add(faTwitter, faFacebook, faLinkedin, faXing, faX, faBars, faXmark )
 //form validation
 import file from './VueApp/custom-form-rules/file'
 
-import './VueApp/assets/main.css'
+import './VueApp/assets/compiled/main.css'
 
 // FormKit imports
 import { plugin as formKitPlugin, defaultConfig } from '@formkit/vue'

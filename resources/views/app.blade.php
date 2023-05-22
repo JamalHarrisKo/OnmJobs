@@ -28,13 +28,28 @@
 		</div>
 	</div>
 	@endif
+	@if (\Session::has('success'))
+	<div class="errorModal" style="display:none">
+		<div class="errorModal__window">
+			<span class="errorModal__window__closer">
+				X
+			</span>
+			<div class="errorModal__success_message">
+				<p>Vielen Dank für deine Bewerbung bei ONM!</p>
+				<p>Wir werden deine Unterlagen durchgehen und uns in kürze melden.</p>
+			</div>
+			
+			
+		</div>
+	</div>
+@endif
 
 	<div id="app"></div>
 
 	<input form="jobApplication" type="hidden" name="_token" id="csrf-token" value="{{ csrf_token() }}">
 	@vite('resources/js/app.js')
 </body>
-@if($errors->any())
+@if($errors->any() || \Session::has('success'))
 <script>
 	/* move this to a different file, maybe */
 	errorModalCloser = document.querySelector('.errorModal__window__closer');

@@ -383,41 +383,41 @@
                     <p class="formkit_tab_title">Abschluss</p>
                     <!-- <Input type="file" name="file" label="Select your documents to upload"
                         help="Select one or more PDFs to upload" validation="mime:application/pdf" multiple /> -->
-
-                    <FormKit type="file" @change="showFileInputTwo()" id="file" class="file" name='file' label="Dokumente"
-                        accept=".pdf,.docx,.xml,.md,.csv" multiple validation="required|*file" :validation-messages="{
-                            required: 'dies ist ein Pflichtfeld',
-                            file: 'bitte Datein vom Typ \'.pdf\' auswählen'
-                        }" :wrapper-class="{
+                    <p class="formkit-label">Dokumente</p>
+                    <div class="formkit_filess">
+                        <p class="formkit_placeholder">Noch keine Dokumente ausgewählt...</p>
+                        <FormKit type="file" id="file" class="file" name='file' accept=".pdf,.docx,.xml,.md,.csv" multiple
+                            validation="required|*file" :validation-messages="{
+                                required: 'dies ist ein Pflichtfeld',
+                                file: 'bitte Datein vom Typ \'.pdf\' auswählen'
+                            }" :wrapper-class="{
     'file_input_wrapper': true,
 }" />
-                    <FormKit type="file" @change="showFileInputThree()" id="file2" name='file2'
-                        accept=".pdf,.docx,.xml,.md,.csv" :wrapper-class="{
-                            'file_input_wrapper file--invisible': true,
+                        <FormKit type="file" id="file2" name='file2' accept=".pdf,.docx,.xml,.md,.csv" :wrapper-class="{
+                            'file_input_wrapper ': true,
                         }" multiple validation="*file" :validation-messages="{
-    
+
     file: 'bitte Datein vom Typ \'.pdf\' auswählen'
 }" />
-                    <FormKit type="file" id="file3" @change="showFileInputFour()" name='file3'
-                        accept=".pdf,.docx,.xml,.md,.csv" :wrapper-class="{
-                            'file_input_wrapper file--invisible': true,
+                        <FormKit type="file" id="file3" name='file3' accept=".pdf,.docx,.xml,.md,.csv" :wrapper-class="{
+                            'file_input_wrapper ': true,
                         }" multiple validation="*file" :validation-messages="{
-    
+
     file: 'bitte Datein vom Typ \'.pdf\' auswählen'
 }" />
-                    <FormKit type="file" id="file4" name='file4' @change="showFileInputFive()"
-                        accept=".pdf,.docx,.xml,.md,.csv" :wrapper-class="{
-                            'file_input_wrapper file--invisible': true,
+                        <FormKit type="file" id="file4" name='file4' accept=".pdf,.docx,.xml,.md,.csv" :wrapper-class="{
+                            'file_input_wrapper ': true,
                         }" multiple validation="*file" :validation-messages="{
-    
+
     file: 'bitte Datein vom Typ \'.pdf\' auswählen'
 }" />
-                    <FormKit type="file" id="file5" name='file5' accept=".pdf,.docx,.xml,.md,.csv" :wrapper-class="{
-                        'file_input_wrapper file--invisible': true,
-                    }" multiple validation="*file" :validation-messages="{
-    
+                        <FormKit type="file" id="file5" name='file5' accept=".pdf,.docx,.xml,.md,.csv" :wrapper-class="{
+                            'file_input_wrapper ': true,
+                        }" multiple validation="*file" :validation-messages="{
+
     file: 'bitte Datein vom Typ \'.pdf\' auswählen'
 }" />
+                    </div>
                     <!-- <div id="uploaded_files"></div> -->
                     <!-- <FormKit type="file" name='file' label="Dokumente"
                         accept=".pdf,.docx,.xml,.md,.csv"
@@ -425,10 +425,10 @@
                         multiple="true" validation="(500)required" :validation-messages="{
                             required:'dies ist ein Pflichtfeld'
                         }"/> -->
-                    <p class="form_explanation_text">Feld anklicken um PDF-Datein Auszuwählen, oder per drag-and-drop einfügen (mehrere Datein können
-                        durch das halten der strg Taste ausgewählt werden)</p>
 
-                    <div class="addFileButton" @click="uploadFile(event)">add files</div>
+
+                    <div class="addFileButton" @click="uploadFile(event)">Dokumente hochladen</div>
+                    <p class="form_explanation_text">Button anklicken um PDF-Datein Auszuwählen</p>
                     <FormKit type="textarea" name="bonusText" label="Sonstige Kenntnisse im Bereich" rows="10"
                         placeholder="" />
                     <FormKit name="jobapplication" type="hidden" :value="Formname" />
@@ -541,7 +541,7 @@ export default {
                 var fragmente = [];
 
             }
-            console.log(fragmente)
+
             // Zählschleife; bei jedem Durchgang den Namen, Typ und 
             // die Dateigröße der ausgewählten Dateien zum Array hinzufügen
             for (var i = 0, f; f = files[i]; i++) {
@@ -551,49 +551,49 @@ export default {
             // alles als HTML-Inhalt in das output-Element mit id='dateiListe' einsetzen.
             document.getElementById('uploaded_files').innerHTML = fragmente.join('');
         }
+
+        document.querySelectorAll('.formkit-file-remove').forEach(function (el) {
+            el.onclick = function (el) {
+                alert('hi');
+            }
+        })
     },
     methods: {
         showFileInputTwo() {
-            if (document.getElementById('file').files) {
-                document.getElementById('file2').parentElement.parentElement.classList.remove('file--invisible')
-            }
+            // if (document.getElementById('file').files) {
+            //     // document.getElementById('file2').parentElement.parentElement.classList.remove('file--invisible')
+            //     // document.querySelector('.formkit-label').classList.add('d-none')
+
+            // }
         },
         showFileInputThree() {
-            if (document.getElementById('file2').files) {
-                document.getElementById('file3').parentElement.parentElement.classList.remove('file--invisible')
-            }
+            // console.log(document.getElementById('file2').files.length != 0)
+            // if (document.getElementById('file2').files.length != 0) {
+            //     document.getElementById('file3').parentElement.parentElement.classList.remove('file--invisible')
+            //     document.querySelector('.formkit-label').classList.add('d-none')
+
+            // }
         },
         showFileInputFour() {
-            if (document.getElementById('file3').files) {
-                document.getElementById('file4').parentElement.parentElement.classList.remove('file--invisible')
-            }
+            // if (document.getElementById('file3').files) {
+            //     document.getElementById('file4').parentElement.parentElement.classList.remove('file--invisible')
+            //     document.querySelector('.formkit-label').classList.add('d-none')
+
+            // }
         },
         showFileInputFive() {
-            if (document.getElementById('file4').files) {
-                document.getElementById('file5').parentElement.parentElement.classList.remove('file--invisible')
-            }
+            // if (document.getElementById('file4').files) {
+            //     document.getElementById('file5').parentElement.parentElement.classList.remove('file--invisible')
+            //     document.querySelector('.formkit-label').classList.add('d-none')
+
+            // }
         },
         uploadFile(event) {
-            var found = false
-            // event.preventDefault()
-            console.log('hello')
-            // // console.log(document.querySelector('file_input_wrapper:not([file--invisible])'))
-            // // // document.querySelector('file_input_wrapper:not([file--invisible])').forEach(function (el) {
-            // //     // if (!el.querySelector('input[type=file]').files && !found) {
-            // //     //     console.log(el)
-            // //     //     console.log('---------------------')
-            // //         console.log(document.getElementById('asdffd'))
+            document.querySelector('.formkit_placeholder').classList.add('d-none')
 
-            // //             document.getElementById('asdffd').click();
-            //         document.getElementById('asdffd').click();
-            //     //     found = true;
-            //     //     console.log(el)
-            //     //     return
-            //     // }
-            // // }
-            // // )
+            var found = false
             document.querySelectorAll('.file_input_wrapper').forEach(function (el) {
-                console.log(el.querySelector('input[type=file]').files.length == 0)
+
                 if (el.querySelector('input[type=file]').files.length == 0 && !found) {
                     el.querySelector('input[type=file]').click();
                     // console.log(el);
@@ -601,6 +601,10 @@ export default {
                     return
                 }
             })
+        },
+
+        hideField(el) {
+            el.target.parentElement.parentElement.parentElement.parentElement.classList.add('file--invisible')
         }
     }
 }
@@ -608,160 +612,4 @@ export default {
 
 <style>
 
-.form_explanation_text{
-    font-size: 0.9rem;
-    color: gray;
-    margin-top: 0;
-    padding-bottom: 1rem;
-}
-.addFileButton {
-    display: block;
-    width: fit-content;
-    text-decoration: none;
-    padding: 0.7rem 1.8rem;
-    border: 2px solid #ff8c00;
-    color: #ff8c00;
-    border-radius: 5px;
-    margin-bottom: 3rem;
-    transition: ease 0.2s;
-    font-size: 0.875em;
-    background-color: #ffffff;
-    cursor: pointer;
-}
-
-.addFileButton:hover {
-    color: #ffffff;
-    background-color: #ff8c00;
-
-    transform: scale(1.05);
-}
-
-.file--invisible {
-    display: none;
-}
-
-.formkit-steps {
-    /* background-color: #FFFFFF; */
-}
-
-.formkit-steps .formkit-inner {
-    background-color: #FAF9F6;
-}
-
-.formkit-steps textarea {
-    /* background-color: #FAF9F6; */
-}
-
-.formkit-messages:not(.formkit-wrapper .formkit-messages) {
-    display: none;
-}
-
-.gdpr_text {
-    font-size: 0.9rem;
-    color: gray;
-    margin-top: 0;
-    padding-bottom: 1rem;
-}
-
-.gdpr_text a {
-    color: #ff8c00;
-    text-decoration: none;
-}
-
-.radio_flex {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-    flex-grow: 1;
-    justify-content: center;
-}
-
-.radio_flex .formkit-outer {
-    min-width: 300px;
-    margin: 1rem;
-    flex-grow: 1;
-}
-
-/* radio buttons */
-[data-type="checkbox"] .formkit-input:checked~.formkit-decorator .formkit-icon,
-[data-type="radio"] .formkit-input:checked~.formkit-decorator .formkit-icon {
-    color: #ff8c00 !important;
-}
-
-[data-type="checkbox"] .formkit-input:checked~.formkit-decorator,
-[data-type="radio"] .formkit-input:checked~.formkit-decorator {
-    box-shadow: 0 0 0 1px #ff8c00 !important;
-}
-
-.submit_wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-:root {
-    --multistep-color-success: #ff8c00 !important;
-}
-
-[data-type="button"] .formkit-input {
-    background-color: white !important;
-    border: 2px solid #ff8c00 !important;
-    color: #ff8c00 !important;
-    transition: ease 0.2s;
-}
-
-[data-type="button"] .formkit-input:hover {
-    background-color: #ff8c00 !important;
-    color: white !important;
-    transition: ease 0.2s;
-
-}
-
-[data-type="submit"] .formkit-input {
-    background-color: #ff8c00 !important;
-    font-size: 1.1rem !important;
-    /* text-transform: uppercase; */
-}
-
-.formContainer {
-    margin-bottom: 5rem;
-}
-
-.formkit-wrapper {
-    margin: 0 auto;
-    /* margin-bottom: 5rem; */
-}
-
-.formkit-outer[data-type="multi-step"]>[data-tab-style="progress"]>.formkit-tabs .formkit-tab-label {
-    white-space: break-spaces !important;
-}
-
-.formkit-outer[data-type="multi-step"]>.formkit-wrapper {
-    max-width: 800px;
-    min-width: 60%;
-}
-
-.formkit_tab_title {
-    display: none;
-}
-
-@media(max-width:1400px) {
-    .formkit_tab_title {
-        /* display: block; */
-    }
-
-    .formkit-outer[data-type="multi-step"]>.formkit-wrapper>.formkit-tabs .formkit-tab[data-active="false"] span {
-        display: none;
-    }
-
-    .formkit-outer[data-type="multi-step"]>.formkit-wrapper>.formkit-tabs .formkit-tab[data-active="true"] span {
-        width: fit-content;
-    }
-}
-
-@media(max-width: 576px) {
-    .formkit-tabs {
-        margin-bottom: 3rem !important;
-    }
-}
 </style>
